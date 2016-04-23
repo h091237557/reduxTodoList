@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "685d7a27f9fba266e1e1"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "1d30a8c7b5d367c9432e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -30078,7 +30078,8 @@
 	    return function (next) {
 	      return function (action) {
 	        var result = next(action);
-	        db.setItem('mydb', JSON.stringify({ todos: store.getState().todos }));
+	        // db.setItem('mydb', JSON.stringify( {todos:store.getState().todos} ));
+	        db.setItem('mydb', JSON.stringify(store.getState()));
 	        return result;
 	      };
 	    };
