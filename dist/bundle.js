@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "d9529219b45484f97a07"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "a10081971a1152257048"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -2459,9 +2459,6 @@
 	  }
 	};
 	
-	if (db.hasOwnProperty('mydb') == false) {
-	  db.setItem('mydb', JSON.stringify({ todos: [], visible: 'SHOW_ALL', routing: { locationBeforeTransitions: null } }));
-	}
 	var initState = JSON.parse(db.getItem('mydb'));
 	var store = (0, _store2.default)(switchVisible(initState, pathname));
 	var history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.browserHistory, store);
