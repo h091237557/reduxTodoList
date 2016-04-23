@@ -12,8 +12,7 @@ import { syncHistoryWithStore }                       from 'react-router-redux';
 
 
 const db = window.localStorage;
-let path = "";
-let pathname = "";
+let path = "",pathname = "";
 if (process.env.NODE_ENV === 'production') {
   path="/sudo";
   pathname = location.hash.slice(2);
@@ -35,7 +34,10 @@ const switchVisible = (state,path) => {
   }
 }
 
-let initState = JSON.parse(db.getItem('mydb'));
+if( db.hasOwnProperty('mydb') == false ){
+    db.setItem('mydb', JSON.stringify({ todos: [], visible: 'SHOW_ALL', routing: {locationBeforeTransitions:null} }));
+}
+const initState = JSON.parse(db.getItem('mydb'));
 const store = configureStore(switchVisible(initState,pathname));
 const history = syncHistoryWithStore(browserHistory, store);
 

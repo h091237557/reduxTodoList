@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "a10081971a1152257048"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f26ea08de29f2ec22bfa"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -2436,8 +2436,8 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var db = window.localStorage;
-	var path = "";
-	var pathname = "";
+	var path = "",
+	    pathname = "";
 	if (true) {
 	  path = "/sudo";
 	  pathname = location.hash.slice(2);
@@ -2459,6 +2459,9 @@
 	  }
 	};
 	
+	if (db.hasOwnProperty('mydb') == false) {
+	  db.setItem('mydb', JSON.stringify({ todos: [], visible: 'SHOW_ALL', routing: { locationBeforeTransitions: null } }));
+	}
 	var initState = JSON.parse(db.getItem('mydb'));
 	var store = (0, _store2.default)(switchVisible(initState, pathname));
 	var history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.browserHistory, store);
