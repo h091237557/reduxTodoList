@@ -25,7 +25,7 @@ class VisibleState extends Component {
 export default connect(
                     state => state,
                     (dispatch) => {
-                      let location = location.pathname;
+                      let location = window.location.pathname;
                       location = (location.slice(-1).indexOf('/') !== -1) ? location : location + '/';
                       return {
                         ...bindActionCreators(TodoAction, dispatch),

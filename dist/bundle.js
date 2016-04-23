@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "96053d70191f42c26ef9"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "685d7a27f9fba266e1e1"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -38318,7 +38318,7 @@
 	exports.default = (0, _reactRedux.connect)(function (state) {
 	  return state;
 	}, function (dispatch) {
-	  var location = location.pathname;
+	  var location = window.location.pathname;
 	  location = location.slice(-1).indexOf('/') !== -1 ? location : location + '/';
 	  return _extends({}, (0, _redux.bindActionCreators)(TodoAction, dispatch), {
 	    redirect: function redirect(path) {
