@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b344f70cc01e58fab8a4"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "52bccff0be13ed3375a0"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -2481,8 +2481,11 @@
 	        _react2.default.createElement(_reactRouter.IndexRoute, { component: _App.App }),
 	        _react2.default.createElement(_reactRouter.Redirect, { from: 'All', to: path }),
 	        _react2.default.createElement(_reactRouter.Route, { path: 'Starred', component: _App.App }),
+	        _react2.default.createElement(_reactRouter.Redirect, { from: '#/Starred', to: 'Starred' }),
 	        _react2.default.createElement(_reactRouter.Route, { path: 'Active', component: _App.App }),
-	        _react2.default.createElement(_reactRouter.Route, { path: 'Complete', component: _App.App })
+	        _react2.default.createElement(_reactRouter.Redirect, { from: '#/Active', to: 'Active' }),
+	        _react2.default.createElement(_reactRouter.Route, { path: 'Complete', component: _App.App }),
+	        _react2.default.createElement(_reactRouter.Redirect, { from: '#/Complete', to: 'Complete' })
 	      )
 	    )
 	  )
@@ -30078,8 +30081,8 @@
 	    return function (next) {
 	      return function (action) {
 	        var result = next(action);
-	        // db.setItem('mydb', JSON.stringify( {todos:store.getState().todos} ));
-	        db.setItem('mydb', JSON.stringify(store.getState()));
+	        db.setItem('mydb', JSON.stringify({ todos: store.getState().todos }));
+	        // db.setItem('mydb', JSON.stringify(store.getState()) );
 	        return result;
 	      };
 	    };
