@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "52bccff0be13ed3375a0"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "bd61a33d3d7f6671c3f6"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -2440,7 +2440,7 @@
 	var pathname = "";
 	if (true) {
 	  path = "/sudo";
-	  pathname = location.pathname.slice(6);
+	  pathname = location.hash.slice(2);
 	} else {
 	  path = "/";
 	  pathname = location.pathname.slice(1);
@@ -2481,11 +2481,8 @@
 	        _react2.default.createElement(_reactRouter.IndexRoute, { component: _App.App }),
 	        _react2.default.createElement(_reactRouter.Redirect, { from: 'All', to: path }),
 	        _react2.default.createElement(_reactRouter.Route, { path: 'Starred', component: _App.App }),
-	        _react2.default.createElement(_reactRouter.Redirect, { from: '#/Starred', to: 'Starred' }),
 	        _react2.default.createElement(_reactRouter.Route, { path: 'Active', component: _App.App }),
-	        _react2.default.createElement(_reactRouter.Redirect, { from: '#/Active', to: 'Active' }),
-	        _react2.default.createElement(_reactRouter.Route, { path: 'Complete', component: _App.App }),
-	        _react2.default.createElement(_reactRouter.Redirect, { from: '#/Complete', to: 'Complete' })
+	        _react2.default.createElement(_reactRouter.Route, { path: 'Complete', component: _App.App })
 	      )
 	    )
 	  )

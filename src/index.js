@@ -16,7 +16,7 @@ let path = "";
 let pathname = "";
 if (process.env.NODE_ENV === 'production') {
   path="/sudo";
-  pathname = location.pathname.slice(6);
+  pathname = location.hash.slice(2);
 } else {
   path="/";
   pathname = location.pathname.slice(1);
@@ -50,11 +50,13 @@ const node = (
               <IndexRoute component={App}/>
               <Redirect from="All" to={path} />
               <Route path="Starred" component={App}/>
-              <Redirect from="#/Starred" to='Starred' />
               <Route path="Active" component={App}/>
-              <Redirect from="#/Active" to='Active' />
               <Route path="Complete" component={App}/>
-              <Redirect from="#/Complete" to='Complete' />
+              {/*
+                <Redirect from="#/Starred" to='Starred' />
+                <Redirect from="#/Active" to='Active' />
+                <Redirect from="#/Complete" to='Complete' />
+              */}
            </Route>
           </Router>
         </div>
