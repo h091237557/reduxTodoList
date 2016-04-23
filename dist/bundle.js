@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "1d30a8c7b5d367c9432e"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "a0073eeb8b6419c3427b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -30078,8 +30078,8 @@
 	    return function (next) {
 	      return function (action) {
 	        var result = next(action);
-	        // db.setItem('mydb', JSON.stringify( {todos:store.getState().todos} ));
-	        db.setItem('mydb', JSON.stringify(store.getState()));
+	        db.setItem('mydb', JSON.stringify({ todos: store.getState().todos }));
+	        // db.setItem('mydb', JSON.stringify(store.getState()) );
 	        return result;
 	      };
 	    };
@@ -38323,7 +38323,7 @@
 	  location = location.slice(-1).indexOf('/') !== -1 ? location : location + '/';
 	  return _extends({}, (0, _redux.bindActionCreators)(TodoAction, dispatch), {
 	    redirect: function redirect(path) {
-	      dispatch((0, _reactRouterRedux.push)(location + path));
+	      dispatch((0, _reactRouterRedux.push)(location + '#/' + path));
 	    }
 	  });
 	})(VisibleState);

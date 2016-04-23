@@ -29,7 +29,7 @@ export default connect(
                       location = (location.slice(-1).indexOf('/') !== -1) ? location : location + '/';
                       return {
                         ...bindActionCreators(TodoAction, dispatch),
-                        redirect (path) { dispatch(push(location+path));}
+                        redirect (path) { dispatch(push(location+'#/'+path));}
                       }
                     }
                 )(VisibleState);
