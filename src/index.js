@@ -35,9 +35,6 @@ const switchVisible = (state,path) => {
   }
 }
 
-if( db.hasOwnProperty('mydb') == false ){
-    db.setItem('mydb', JSON.stringify({ todos: [], visible: 'SHOW_ALL', routing: {locationBeforeTransitions:null} }));
-}
 let initState = JSON.parse(db.getItem('mydb'));
 const store = configureStore(switchVisible(initState,pathname));
 const history = syncHistoryWithStore(browserHistory, store);
