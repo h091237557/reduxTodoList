@@ -105,6 +105,12 @@ body {
   .list {
     background: #fff;
     border: 1px solid #eeeeee;
+    &-empty {
+      font-size: 3rem;
+      color:#2ab187;
+      background: none;
+      border:0;
+    }
     .item {
       height: 120px;
       position: relative;
