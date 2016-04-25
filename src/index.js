@@ -43,7 +43,6 @@ const history = syncHistoryWithStore(browserHistory, store);
 
 const node = (
       <Provider store={store}>
-        <div style={{ height: '100%' }}>
           <Router history={history}>
              <Route path={path}>
               <IndexRoute component={App}/>
@@ -58,7 +57,6 @@ const node = (
               */}
            </Route>
           </Router>
-        </div>
       </Provider>
 );
 

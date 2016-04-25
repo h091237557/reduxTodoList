@@ -11,7 +11,7 @@ const TodoList = ({
   DeleteTodo,
   ToggleStarTodo
 },ownProps) => (
-  <div>
+  <div className="list">
     {todos.map( todo =>
       <Todo
         toggleTodo = { () => {

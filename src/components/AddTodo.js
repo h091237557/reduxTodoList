@@ -6,17 +6,21 @@ import * as TodoAction          from '../actions/';
 let TodosInput = ({ AddTodo }) => {
   let inputText;
   return (
-    <div>
-      <input ref = {node => {
-        inputText = node;
-      }} />
-      <button onClick={ () => {
+    <div className="addTodo">
+      <input className="addTodo-input" type="text"
+        placeholder="Type"
+        ref = {node => {
+          inputText = node;
+        }} />
+      <div className="addTodo-btn" onClick={ () => {
         if(inputText.value === ''){
           return;
         }
         AddTodo(inputText.value);
         inputText.value = '';
-      }}> Add Todo </button>
+      }}>
+        <a href="javascript:"><i className="fa fa-plus fa-3x" aria-hidden="true"></i></a>
+      </div>
     </div>
   );
 };
