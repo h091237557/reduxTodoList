@@ -9,31 +9,38 @@ const TodoList = ({
   ToggleTodo,
   UpdateTodo,
   DeleteTodo,
-  ToggleStarTodo
-},ownProps) => (
-  <div className="list">
-    {todos.map( todo =>
-      <Todo
-        toggleTodo = { () => {
-          ToggleTodo(todo.id);
-        }}
+  ToggleStarTodo,
+  EditTodo
+},ownProps) => {
+  return (
+    <div className="list">
+      {todos.map( todo =>
+        <Todo
+          toggleTodo = { () => {
+            ToggleTodo(todo.id);
+          }}
 
-        toggleStarTodo = { () => {
-          ToggleStarTodo(todo.id);
-        }}
+          toggleStarTodo = { () => {
+            ToggleStarTodo(todo.id);
+          }}
 
-        deleteTodo = { () =>{
-          DeleteTodo(todo.id);
-        }}
+          deleteTodo = { () =>{
+            DeleteTodo(todo.id);
+          }}
 
-        textUpdate = { (nextText) => {
-          UpdateTodo({text:nextText,id:todo.id});
-        }}
-        key = {todo.id}
-        {...todo} />
-    )}
-  </div>
-);
+          editTodo = { (nextText) => {
+            EditTodo(todo.id);
+          }}
+
+          textUpdate = { (nextText) => {
+            UpdateTodo({text:nextText,id:todo.id});
+          }}
+          key = {todo.id}
+          {...todo} />
+      )}
+    </div>);
+}
+
 
 
 const filter = (todos,visible) => {

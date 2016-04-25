@@ -10,6 +10,8 @@ if( db.hasOwnProperty('mydb') != false ){
 }
 export const AddTodo = createAction(types.ADD_TODO, text => { id++; return {text,id}; });
 
+export const EditTodo = createAction(types.EDIT_TODO, amount => amount);
+
 export const ToggleTodo = createAction(types.TOGGLE_TODO, amount => amount);
 
 export const DeleteTodo = createAction(types.DELETE_TODO, amount => amount);

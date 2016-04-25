@@ -5,10 +5,17 @@ import * as TodoAction          from '../actions/';
 
 let TodosInput = ({ AddTodo }) => {
   let inputText;
+  const _handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      AddTodo(inputText.value);
+      inputText.value = '';
+    }
+  }
   return (
     <div className="addTodo">
       <input className="addTodo-input" type="text"
         placeholder="Type"
+        onKeyPress = {_handleKeyPress}
         ref = {node => {
           inputText = node;
         }} />

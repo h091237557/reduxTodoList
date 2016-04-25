@@ -7,6 +7,8 @@ function todo(state, action) {
         id:action.payload.id,
         text:action.payload.text,
         star:false,
+        editCurrent:false,
+        isEdit:false,
         completed:false
       };
     case types.TOGGLE_TODO:
@@ -32,6 +34,19 @@ function todo(state, action) {
       return {
         ...state,
         star: !state.star
+      };
+    case types.EDIT_TODO:
+      if(state.id !== action.payload){
+        return {
+          ...state,
+          isEdit: !state.isEdit,
+          editCurrent: false
+        };
+      }
+      return {
+        ...state,
+        editCurrent: !state.editCurrent,
+        isEdit: !state.isEdit
       };
     case types.DELETE_TODO:
       return state;

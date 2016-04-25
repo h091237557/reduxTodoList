@@ -19,12 +19,13 @@
 
 body {
   height: 100vh;
+  width: 100vw;
   margin: 0 auto;
 }
 
 .l-main {
   min-height: 100%;
-  width: 100%;
+  min-width: 100%;
   background: -moz-linear-gradient(top, #f8fdff 0%, ‪#‎41d1d4‬ 100%); /* FF3.6-15 */
   background: -webkit-linear-gradient(top, #f8fdff 0%,#41d1d4 100%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(to bottom, #f8fdff 0%,#41d1d4 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
@@ -32,7 +33,7 @@ body {
 
 .l-container {
     margin: 0 auto;
-    width: 960px;
+    width: 640px;
     position: relative;
     max-height: 100000px;
 }
@@ -47,6 +48,14 @@ body {
     width: 455px;
     padding-right: 30px;
     margin: 0 auto;
+    .fixed{
+      position: fixed;
+      top:0;
+      width: inherit;
+      background-color: white;
+      z-index: 999999999999;
+      border-bottom: 2px solid #eeeeee;
+    }
   }
   .logo {
     &-title {
@@ -62,12 +71,12 @@ body {
     margin: 0 auto;
     display: inline-block;
     a{
-      color:#717677;
+      color: #717677;
       &:hover{
-        color:#27cc95;
+        color: #27cc95;
       }
       &.active{
-        color:#27cc95;
+        color: #27cc95;
       }
     }
     &-item {
@@ -87,6 +96,7 @@ body {
       width: 390px;
       border: 0;
       font-size: 2rem;
+      color: #717677;
     }
     &-btn {
       display: inline-block;
@@ -105,17 +115,27 @@ body {
         text-align: left;
         .textIcon {
           display: inline-block;
-          margin:0 25px;
+          margin: 0 25px;
+          line-height: 2rem;
           &.complete{
-            color:#717677;
+            color: #717677;
           }
         }
-        .text {
+        p.text {
           display: inline-block;
+          line-height: 2rem;
           &.complete{
-            color:#717677;
+            color: #717677;
             text-decoration: line-through;
           }
+          &.textHover{
+            text-decoration: line-through;
+          }
+        }
+        input.text{
+          font-size: 2em;
+          color: #717677;
+          border: 0;
         }
       }
       &-ctrl {

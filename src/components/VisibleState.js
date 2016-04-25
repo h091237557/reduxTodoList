@@ -3,7 +3,7 @@ import { connect }                          from 'react-redux';
 import { bindActionCreators }               from 'redux';
 import * as TodoAction                      from '../actions/';
 import { push }                             from 'react-router-redux';
-import classNames                           from 'classnames'
+import classNames                           from 'classnames';
 
 class VisibleState extends Component {
     constructor(props, context) {

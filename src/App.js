@@ -4,9 +4,28 @@ require("font-awesome-webpack");
 import React, { Component }   from 'react';
 import AddTodo                from './components/AddTodo';
 import TodoList               from './components/TodoList';
-import TodoFilter            from './components/TodoFilter';
+import TodoFilter             from './components/TodoFilter';
+import classNames             from 'classnames';
 
 export class App extends Component {
+  todoOffsetTop = null
+  fixedheight = null
+  fixStyle = {}
+  state = {
+    setFix:false
+  }
+  componentDidMount () {
+    window.addEventListener('scroll', this.handleScroll.bind(this));
+  }
+
+  handleScroll(){
+    if(window.pageYOffset >= this.todoOffsetTop){
+      this.fixStyle = {'marginTop': this.fixedheight+'px'};
+      this.setState({setFix: true});
+    }else{
+      this.fixStyle = {};
+      this.setState({setFix: false});    }
+  }
   render() {
     return (
       <section className="index">
@@ -16,10 +35,24 @@ export class App extends Component {
               TODO<span className="logo-comment">beta</span>
             </p>
           </div>
-          <div className="index__content">
-              <TodoFilter />
-              <AddTodo />
-              <TodoList />
+          <div className="index__content"
+                ref = {node => {
+                  if(node === null) return;
+                  if(this.todoOffsetTop !== null) return;
+                  this.todoOffsetTop = node.offsetTop;
+                }}>
+              <div className={classNames({ 'fixed': this.state.setFix })}
+                    ref = {node => {
+                        if(node === null) return;
+                        if(this.fixedheight !== null) return;
+                        this.fixedheight = node.clientHeight;
+                    }}>
+                <TodoFilter />
+                <AddTodo />
+              </div>
+              <div style={this.fixStyle}>
+                <TodoList className="asdf"/>
+              </div>
           </div>
         </div>
       </section>

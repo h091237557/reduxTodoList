@@ -6,6 +6,7 @@ export default constants([
     "DELETE_TODO",
     "UPDATE_TODO",
     "TOGGLE_STAR_TODO",
+    "EDIT_TODO",
 
     "SET_VISIBLE",
 ]);

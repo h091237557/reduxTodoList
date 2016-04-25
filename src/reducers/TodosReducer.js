@@ -14,10 +14,11 @@ function todos(state = [], action) {
       return state.map(item => todo(item,action));
     case types.TOGGLE_STAR_TODO:
       return state.map(item => todo(item,action));
+    case types.EDIT_TODO:
+      return state.map(item => todo(item,action));
     case types.DELETE_TODO:
       return state.filter(item => item.id !== action.payload);
     default:
-  // console.log(action);
       return state;
   }
 }
