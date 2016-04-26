@@ -33,6 +33,7 @@ body {
 
 .l-container {
     margin: 0 auto;
+    padding-top: 160px;
     width: 640px;
     position: relative;
     max-height: 100000px;
@@ -41,6 +42,7 @@ body {
 .index {
   text-align: center;
   color:#27cc95;
+  // margin-top: 160px;
   a {
     color:#27cc95;
   }
@@ -58,6 +60,7 @@ body {
     }
   }
   .logo {
+    // margin-bottom: 20px;
     &-title {
       font-size: 7.5rem;
       letter-spacing: 5px;
@@ -68,8 +71,9 @@ body {
     }
   }
   .nav {
-    margin: 0 auto;
+    margin: 15px auto;
     display: inline-block;
+    font-size: 1.5rem;
     a{
       color: #717677;
       &:hover{

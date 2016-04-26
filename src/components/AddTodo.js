@@ -7,6 +7,7 @@ let TodosInput = ({ AddTodo }) => {
   let inputText;
   const _handleKeyPress = (e) => {
     if (e.key === 'Enter') {
+      if(inputText.value === '') return;
       AddTodo(inputText.value);
       inputText.value = '';
     }

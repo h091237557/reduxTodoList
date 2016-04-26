@@ -39,7 +39,7 @@ export class App extends Component {
                 ref = {node => {
                   if(node === null) return;
                   if(this.todoOffsetTop !== null) return;
-                  this.todoOffsetTop = node.offsetTop;
+                  this.todoOffsetTop = node.getBoundingClientRect().top;
                 }}>
               <div className={classNames({ 'fixed': this.state.setFix })}
                     ref = {node => {
