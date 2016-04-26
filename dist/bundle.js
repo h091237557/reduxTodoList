@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e91754135582579f5ed0"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "bab17a47e19ace1e99e9"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -38238,6 +38238,7 @@
 	    value: function _handleKeyPress(e) {
 	      if (e.key === 'Enter') {
 	        // this.setState({isEdit: false});
+	        if (this.state.text === '') return;
 	        this.props.editTodo();
 	        this.props.textUpdate(this.state.text);
 	      }
@@ -38332,8 +38333,9 @@
 	            onKeyPress: this._handleKeyPress });
 	          itemToggle = _react3.default.createElement(
 	            'span',
-	            { className: (0, _classnames2.default)({ 'complete': this.props.completed }, 'textIcon') },
-	            _react3.default.createElement('i', { className: 'fa fa-check-circle fa-3x', 'aria-hidden': 'true' })
+	            { className: (0, _classnames2.default)({ 'complete': this.props.completed }, 'textIcon'),
+	              style: { 'color': '#717677' } },
+	            _react3.default.createElement('i', { className: 'fa fa-genderless fa-3x', 'aria-hidden': 'true' })
 	          );
 	        }
 	        starIcon = '';

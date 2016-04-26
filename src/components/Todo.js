@@ -28,6 +28,7 @@ class Todo extends Component {
     _handleKeyPress (e){
       if (e.key === 'Enter') {
             // this.setState({isEdit: false});
+            if(this.state.text === '') return;
             this.props.editTodo();
             this.props.textUpdate(this.state.text);
           }
@@ -105,8 +106,9 @@ class Todo extends Component {
                                 type='text' value={text}
                                 onChange={ this.changeContent }
                                 onKeyPress = {this._handleKeyPress}/>);
-              itemToggle = (<span className={classNames({ 'complete': this.props.completed},'textIcon')}>
-                                <i className="fa fa-check-circle fa-3x" aria-hidden="true"></i>
+              itemToggle = (<span className={classNames({ 'complete': this.props.completed},'textIcon')}
+                                  style={{'color': '#717677'}}>
+                                <i className="fa fa-genderless fa-3x" aria-hidden="true"></i>
                               </span>);
             }
             starIcon='';
