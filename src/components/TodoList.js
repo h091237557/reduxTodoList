@@ -15,7 +15,7 @@ const TodoList = ({
 },ownProps) => {
   let Todos = null;
   if(todos.length === 0){
-    Todos = "Empty";
+    Todos = "Oops, You got nothing to do.";
   }else{
     Todos = todos.map( todo =>
               <Todo
@@ -40,7 +40,7 @@ const TodoList = ({
                 }}
                 key = {todo.id}
                 {...todo} />
-            );
+            ).reverse();
   }
   return (
     <div className={classNames({ 'list': todos.length !== 0, 'list-empty': todos.length === 0})} >

@@ -13,11 +13,22 @@ class Todo extends Component {
 
     state = {
       isEdit:false,
+      iconHover:false,
       itemHover:false,
       text:this.props.text
     }
 
-    handleHover () {
+    handleIconHover (action) {
+      if(action === 'leave' && !this.state.iconHover){
+        return;
+      }
+      this.setState({iconHover: !this.state.iconHover});
+    }
+
+    handleItemHover (action) {
+      if(action === 'leave' && !this.state.itemHover){
+        return;
+      }
       this.setState({itemHover: !this.state.itemHover});
     }
 
@@ -50,7 +61,7 @@ class Todo extends Component {
 
         // onDoubleClick={ ()=> this.setState({isEdit: true})}
         // let ItemText = ( <a href="javascript:" onClick={ ()=> this.setState({isEdit: true}) }>
-        //                   <p className={ classNames({ 'complete': this.props.completed , 'textHover' : this.state.itemHover}, 'text' )}>
+        //                   <p className={ classNames({ 'complete': this.props.completed , 'textHover' : this.state.iconHover}, 'text' )}>
         //                     {text}
         //                   </p>
         //                  </a> );
@@ -60,7 +71,7 @@ class Todo extends Component {
                                                     editTodo();
                                                   }
                                                 }>
-                          <p className={ classNames({ 'complete': this.props.completed , 'textHover' : this.state.itemHover}, 'text' )}>
+                          <p className={ classNames({ 'complete': this.props.completed , 'textHover' : this.state.iconHover}, 'text' )}>
                             {text}
                           </p>
                          </a> );
@@ -72,12 +83,12 @@ class Todo extends Component {
                                   toggleTodo();
                                 }
                               }
-                              onMouseEnter={this.handleHover.bind(this)}
-                              onMouseLeave={this.handleHover.bind(this)}
+                              onMouseEnter={this.handleIconHover.bind(this,'enter')}
+                              onMouseLeave={this.handleIconHover.bind(this,'leave')}
                               className="textIcon">
                               <i className={classNames({
-                                              'fa-genderless': !this.state.itemHover,
-                                              'fa-check-circle': this.state.itemHover
+                                              'fa-genderless': !this.state.iconHover,
+                                              'fa-check-circle': this.state.iconHover
                                             },'fa','fa-3x')}
                                   aria-hidden="true"></i>
                             </a>);
@@ -99,23 +110,30 @@ class Todo extends Component {
         if(this.props.isEdit){
             if(this.props.editCurrent) {
               ItemText = (<input className="text"
+                                style={{cursor: 'pointer'}}
                                 ref={ input => {
                                       if(input === null) return;
                                         input.focus();
                                     }}
                                 type='text' value={text}
                                 onChange={ this.changeContent }
+                                onblur={ this._handleKeyPress }
                                 onKeyPress = {this._handleKeyPress}/>);
               itemToggle = (<span className={classNames({ 'complete': this.props.completed},'textIcon')}
                                   style={{'color': '#717677'}}>
                                 <i className="fa fa-genderless fa-3x" aria-hidden="true"></i>
                               </span>);
             }
+        }
+        // Hover
+        if(!this.state.itemHover || this.props.isEdit){
+          if(!this.props.star){
             starIcon='';
-            trashIcon = '';
+          }
+          trashIcon = '';
         }
         return (
-          <ul className="clearfix">
+          <ul className="clearfix" onMouseEnter={this.handleItemHover.bind(this,'enter')} onMouseLeave={this.handleItemHover.bind(this,'leave')}>
             <li className="item">
                 <div className="item-content">
                     {itemToggle}
