@@ -104,7 +104,7 @@ class Todo extends Component {
                           {text}
                         </p>
                        </span> );
-          trashIcon = '';
+          // trashIcon = '';
         }
         // Edit
         if(this.props.isEdit){

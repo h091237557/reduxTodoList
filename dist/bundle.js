@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "995aeb190c4535e8e7d7"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "ddb50d803121e1ebd92a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -38330,7 +38330,7 @@
 	            text
 	          )
 	        );
-	        trashIcon = '';
+	        // trashIcon = '';
 	      }
 	      // Edit
 	      if (this.props.isEdit) {
