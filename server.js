@@ -1,8 +1,7 @@
 #!/bin/env node
 //  OpenShift sample Node application
-var express = require('express');
 var fs      = require('fs');
-
+var app = require('./app');
 
 /**
  *  Define the sample application.
@@ -176,4 +175,3 @@ var SampleApp = function() {
 var zapp = new SampleApp();
 zapp.initialize();
 zapp.start();
-
