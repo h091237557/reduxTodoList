@@ -7,15 +7,13 @@ var bodyParser = require('body-parser');
 var fs = require('fs');
 
 var app = express();
+app.use('/dist', express.static(path.join(__dirname, 'dist')))
 
 //----------------------------
 // Router
 var router = express.Router();
 const index = fs.readFileSync('./index.html', {encoding: 'utf-8'});
 /* GET home page. */
-// router.get('/', function(req, res) {
-//   res.json('hello api');
-// });
 router.get('*', (req, res) => {
   // 將組合好的 html 字串返還，request 處理至此完成
   res.status(200).send(index);
@@ -31,6 +29,7 @@ var compiler = webpack(config);
 
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: false,
+  contentBase: './dist/',
   publicPath: config.output.publicPath
 }));
 
@@ -49,8 +48,6 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
 app.use('/', router);
 
 /// catch 404 and forward to error handler
