@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "794541482f3267a44143"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f23a92ee1c5f8888c5c2"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -2452,7 +2452,7 @@
 	var path = "",
 	    pathname = "";
 	if (true) {
-	  path = "/";
+	  path = "/sudo";
 	  pathname = location.hash.slice(2);
 	} else {
 	  path = "/";
