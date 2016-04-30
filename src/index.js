@@ -14,7 +14,7 @@ import { syncHistoryWithStore }                       from 'react-router-redux';
 const db = window.localStorage;
 let path = "",pathname = "";
 if (process.env.NODE_ENV === 'production') {
-  path="/sudo";
+  path="/reduxTodoList";
   pathname = location.hash.slice(2);
 } else {
   path="/";

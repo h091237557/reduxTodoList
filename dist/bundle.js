@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "5d027a24697fb58ad5fd"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b0ed3c9946b61c563f25"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -2452,7 +2452,7 @@
 	var path = "",
 	    pathname = "";
 	if (true) {
-	  path = "/sudo";
+	  path = "/reduxTodoList";
 	  pathname = location.hash.slice(2);
 	} else {
 	  path = "/";
@@ -30047,15 +30047,15 @@
 	  }
 	};
 	
-	var _UsersJackChanWorkspaceTestNode_modulesReactTransformHmrLibIndexJs2 = (0, _index6.default)({
-	  filename: '/Users/JackChan/workspace/test/src/App.js',
+	var _UsersJackChanWorkspaceReduxTodo_serverNode_modulesReactTransformHmrLibIndexJs2 = (0, _index6.default)({
+	  filename: '/Users/JackChan/workspace/reduxTodo_server/src/App.js',
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
 	});
 	
-	var _UsersJackChanWorkspaceTestNode_modulesReactTransformCatchErrorsLibIndexJs2 = (0, _index4.default)({
-	  filename: '/Users/JackChan/workspace/test/src/App.js',
+	var _UsersJackChanWorkspaceReduxTodo_serverNode_modulesReactTransformCatchErrorsLibIndexJs2 = (0, _index4.default)({
+	  filename: '/Users/JackChan/workspace/reduxTodo_server/src/App.js',
 	  components: _components,
 	  locals: [],
 	  imports: [_react3.default, _index2.default]
@@ -30063,7 +30063,7 @@
 	
 	function _wrapComponent(id) {
 	  return function (Component) {
-	    return _UsersJackChanWorkspaceTestNode_modulesReactTransformHmrLibIndexJs2(_UsersJackChanWorkspaceTestNode_modulesReactTransformCatchErrorsLibIndexJs2(Component, id), id);
+	    return _UsersJackChanWorkspaceReduxTodo_serverNode_modulesReactTransformHmrLibIndexJs2(_UsersJackChanWorkspaceReduxTodo_serverNode_modulesReactTransformCatchErrorsLibIndexJs2(Component, id), id);
 	  };
 	}
 	
@@ -37967,15 +37967,15 @@
 	  }
 	};
 	
-	var _UsersJackChanWorkspaceTestNode_modulesReactTransformHmrLibIndexJs2 = (0, _index6.default)({
-	  filename: '/Users/JackChan/workspace/test/src/components/Todo.js',
+	var _UsersJackChanWorkspaceReduxTodo_serverNode_modulesReactTransformHmrLibIndexJs2 = (0, _index6.default)({
+	  filename: '/Users/JackChan/workspace/reduxTodo_server/src/components/Todo.js',
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
 	});
 	
-	var _UsersJackChanWorkspaceTestNode_modulesReactTransformCatchErrorsLibIndexJs2 = (0, _index4.default)({
-	  filename: '/Users/JackChan/workspace/test/src/components/Todo.js',
+	var _UsersJackChanWorkspaceReduxTodo_serverNode_modulesReactTransformCatchErrorsLibIndexJs2 = (0, _index4.default)({
+	  filename: '/Users/JackChan/workspace/reduxTodo_server/src/components/Todo.js',
 	  components: _components,
 	  locals: [],
 	  imports: [_react3.default, _index2.default]
@@ -37983,7 +37983,7 @@
 	
 	function _wrapComponent(id) {
 	  return function (Component) {
-	    return _UsersJackChanWorkspaceTestNode_modulesReactTransformHmrLibIndexJs2(_UsersJackChanWorkspaceTestNode_modulesReactTransformCatchErrorsLibIndexJs2(Component, id), id);
+	    return _UsersJackChanWorkspaceReduxTodo_serverNode_modulesReactTransformHmrLibIndexJs2(_UsersJackChanWorkspaceReduxTodo_serverNode_modulesReactTransformCatchErrorsLibIndexJs2(Component, id), id);
 	  };
 	}
 	
@@ -38348,15 +38348,15 @@
 	  }
 	};
 	
-	var _UsersJackChanWorkspaceTestNode_modulesReactTransformHmrLibIndexJs2 = (0, _index6.default)({
-	  filename: '/Users/JackChan/workspace/test/src/components/VisibleState.js',
+	var _UsersJackChanWorkspaceReduxTodo_serverNode_modulesReactTransformHmrLibIndexJs2 = (0, _index6.default)({
+	  filename: '/Users/JackChan/workspace/reduxTodo_server/src/components/VisibleState.js',
 	  components: _components,
 	  locals: [module],
 	  imports: [_react3.default]
 	});
 	
-	var _UsersJackChanWorkspaceTestNode_modulesReactTransformCatchErrorsLibIndexJs2 = (0, _index4.default)({
-	  filename: '/Users/JackChan/workspace/test/src/components/VisibleState.js',
+	var _UsersJackChanWorkspaceReduxTodo_serverNode_modulesReactTransformCatchErrorsLibIndexJs2 = (0, _index4.default)({
+	  filename: '/Users/JackChan/workspace/reduxTodo_server/src/components/VisibleState.js',
 	  components: _components,
 	  locals: [],
 	  imports: [_react3.default, _index2.default]
@@ -38364,7 +38364,7 @@
 	
 	function _wrapComponent(id) {
 	  return function (Component) {
-	    return _UsersJackChanWorkspaceTestNode_modulesReactTransformHmrLibIndexJs2(_UsersJackChanWorkspaceTestNode_modulesReactTransformCatchErrorsLibIndexJs2(Component, id), id);
+	    return _UsersJackChanWorkspaceReduxTodo_serverNode_modulesReactTransformHmrLibIndexJs2(_UsersJackChanWorkspaceReduxTodo_serverNode_modulesReactTransformCatchErrorsLibIndexJs2(Component, id), id);
 	  };
 	}
 	
