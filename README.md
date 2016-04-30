@@ -1,10 +1,6 @@
-#Frontend Test
+#Redux TodoList
 
-For SUDO
-
-style @ scss folder
-
-javascript @ src folder
+##For Practice
 
 ##How to start
 ```sh
