@@ -13,9 +13,9 @@ module.exports = {
     './src/index'
   ],
   output: {
-    path: path.join(__dirname, 'static'),
+    path: path.join(__dirname, 'public'),
     filename: 'bundle.js',
-    publicPath: '/reduxTodoList/static/'
+    publicPath: '/reduxTodoList/public/'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

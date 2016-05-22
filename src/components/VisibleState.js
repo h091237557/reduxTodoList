@@ -30,17 +30,10 @@ export default connect(
                       };
                     },
                     (dispatch) => {
-                      let location = window.location.pathname;
-                      location = (location.slice(-1).indexOf('/') !== -1) ? location : location + '/';
                       return {
                         ...bindActionCreators(TodoAction, dispatch),
                         redirect (path) {
-                          if (process.env.NODE_ENV === 'production') {
-                            dispatch(push(location+'#/'+path));
-                          } else {
-                            dispatch(push(path));
-                          }
-                        }
+                          dispatch(push(path));                        }
                       }
                     }
                 )(VisibleState);
