@@ -8,7 +8,7 @@
     "dev": "node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "NODE_ENV=production webpack -d --progress",
-    "prod:git":"npm run build && node server.js"
+    "prod:git":"rimraf public/ && npm run build && node server.js"
   },
   "author": "jackChan <jack5241027@gmail.com>",
   "license": "MIT",
