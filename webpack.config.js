@@ -13,7 +13,7 @@ module.exports = {
     './src/index'
   ],
   output: {
-    path: path.join(__dirname, 'public'),
+    path: path.join(__dirname, 'static'),
     filename: 'bundle.js',
     publicPath: '/reduxTodoList/static/'
   },
