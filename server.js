@@ -1,7 +1,9 @@
 #!/bin/env node
 //  OpenShift sample Node application
+require('babel-register');
+process.env.NODE_ENV = 'production';
 var fs      = require('fs');
-var app = require('./app');
+var app = require('./server/app')(true);
 var express = require('express');
 
 /**
