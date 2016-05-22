@@ -99,15 +99,7 @@ var SampleApp = function() {
     self.createRoutes = function() {
         self.routes = { };
 
-        // Routes for /health, /asciimo, /env and /
-        self.routes['/health'] = function(req, res) {
-            res.send('1');
-        };
-
-        self.routes['/asciimo'] = function(req, res) {
-            var link = "http://i.imgur.com/kmbjB.png";
-            res.send("<html><body><img src='" + link + "'></body></html>");
-        };
+        // Routes for /env
 
         self.routes['/env'] = function(req, res) {
             var content = 'Version: ' + process.version + '\n<br/>\n' +
@@ -120,11 +112,6 @@ var SampleApp = function() {
             res.send('<html>\n' +
                      '  <head><title>Node.js Process Env</title></head>\n' +
                      '  <body>\n<br/>\n' + content + '</body>\n</html>');
-        };
-
-        self.routes['/'] = function(req, res) {
-            res.set('Content-Type', 'text/html');
-            res.send(self.cache_get('index.html') );
         };
     };
 

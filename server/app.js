@@ -42,8 +42,7 @@ module.exports = function(production) {
   var compiler = webpack(config);
 
   app.use(require('webpack-dev-middleware')(compiler, {
-    noInfo: false,
-    contentBase: './dist/',
+    noInfo: true,
     publicPath: config.output.publicPath
   }));
 
