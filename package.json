@@ -8,7 +8,7 @@
     "dev": "node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "NODE_ENV=production webpack -d --progress",
-    "prod:git":"rimraf public/ && npm run build && node server.js"
+    "prod:git": "rimraf public/ && npm run build && node server.js"
   },
   "author": "jackChan <jack5241027@gmail.com>",
   "license": "MIT",
@@ -51,6 +51,7 @@
     "font-awesome": "^4.6.1",
     "font-awesome-webpack": "0.0.4",
     "fs": "0.0.2",
+    "history": "^2.1.1",
     "less": "^2.6.1",
     "method-override": "^2.3.5",
     "morgan": "^1.7.0",

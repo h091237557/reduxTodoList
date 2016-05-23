@@ -27,6 +27,7 @@ export class App extends Component {
       this.setState({setFix: false});    }
   }
   render() {
+    console.log(this.props.location)
     return (
       <section className="index">
         <div className="l-container">

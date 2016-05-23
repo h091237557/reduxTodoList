@@ -7,9 +7,11 @@ import { Router,
           Route,
           IndexRoute,
           browserHistory,
+          hashHistory,
+          useRouterHistory,
           Redirect}                                   from 'react-router';
 import { syncHistoryWithStore }                       from 'react-router-redux';
-
+import { createHashHistory }                          from 'history'
 
 const db = window.localStorage;
 // let path = "",pathname = "";
@@ -22,7 +24,7 @@ const db = window.localStorage;
 // }
 
 const switchVisible = (state) => {
-  let pathname = location.pathname.slice(15);
+  let pathname = location.pathname.slice(17);
   switch (pathname) {
     case 'Active':
       return {...state,visible:'SHOW_ACTIVE'};
@@ -41,10 +43,9 @@ if( db.hasOwnProperty('mydb') == false ){
 const initState = JSON.parse(db.getItem('mydb'));
 const store = configureStore(switchVisible(initState));
 const history = syncHistoryWithStore(browserHistory, store);
-
 const node = (
       <Provider store={store}>
-          <Router history={browserHistory}>
+          <Router history={history}>
              <Route path="/">
               <IndexRoute component={App}/>
               <Redirect from="All" to="#"/>
