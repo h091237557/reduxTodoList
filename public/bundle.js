@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "58de67e7fc6a0637b34c"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "9fb1e7c280903c5a6ad2"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -2478,7 +2478,8 @@
 	  db.setItem('mydb', JSON.stringify({ todos: [], visible: 'SHOW_ALL', routing: { locationBeforeTransitions: null } }));
 	}
 	var initState = JSON.parse(db.getItem('mydb'));
-	var store = (0, _store2.default)(switchVisible(initState));
+	// const store = configureStore(switchVisible(initState));
+	var store = (0, _store2.default)();
 	var history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.browserHistory, store);
 	
 	var node = _react2.default.createElement(
@@ -2491,7 +2492,7 @@
 	      _reactRouter.Route,
 	      { path: '/' },
 	      _react2.default.createElement(_reactRouter.IndexRoute, { component: _App.App }),
-	      _react2.default.createElement(_reactRouter.Redirect, { from: '#/All', to: '#' }),
+	      _react2.default.createElement(_reactRouter.Redirect, { from: 'All', to: '#' }),
 	      _react2.default.createElement(_reactRouter.Route, { path: 'Starred', component: _App.App }),
 	      _react2.default.createElement(_reactRouter.Route, { path: 'Active', component: _App.App }),
 	      _react2.default.createElement(_reactRouter.Route, { path: 'Complete', component: _App.App })
@@ -29979,8 +29980,8 @@
 	    return function (next) {
 	      return function (action) {
 	        var result = next(action);
-	        db.setItem('mydb', JSON.stringify({ todos: store.getState().todos }));
-	        // db.setItem('mydb', JSON.stringify(store.getState()) );
+	        // db.setItem('mydb', JSON.stringify( {todos:store.getState().todos} ));
+	        db.setItem('mydb', JSON.stringify(store.getState()));
 	        return result;
 	      };
 	    };

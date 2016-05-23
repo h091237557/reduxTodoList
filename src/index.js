@@ -50,7 +50,7 @@ const node = (
           <Router history={history}>
              <Route path="/">
               <IndexRoute component={App}/>
-              <Redirect from="#/All" to="#"/>
+              <Redirect from="All" to="#"/>
               <Route path="Starred" component={App}/>
               <Route path="Active" component={App}/>
               <Route path="Complete" component={App}/>

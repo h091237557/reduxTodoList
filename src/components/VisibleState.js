@@ -33,7 +33,7 @@ export default connect(
                       return {
                         ...bindActionCreators(TodoAction, dispatch),
                         redirect (path) {
-                          dispatch(push('#/'+path));
+                          dispatch(push(path));
                           // if (process.env.NODE_ENV === 'production') {
                           //   dispatch(push(location+'#/'+path));
                           // } else {
