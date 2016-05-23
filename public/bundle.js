@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "2e9385361654a8fec6e3"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "6f009a9c4e98e65472da"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -2484,7 +2484,7 @@
 	  { store: store },
 	  _react2.default.createElement(
 	    _reactRouter.Router,
-	    { history: history },
+	    { history: _reactRouter.browserHistory },
 	    _react2.default.createElement(
 	      _reactRouter.Route,
 	      { path: path },
