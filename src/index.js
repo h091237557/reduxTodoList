@@ -24,7 +24,7 @@ const db = window.localStorage;
 // }
 
 const switchVisible = (state) => {
-  let pathname = location.pathname.slice(17);
+  let pathname = location.hash.slice(2);
   switch (pathname) {
     case 'Active':
       return {...state,visible:'SHOW_ACTIVE'};
@@ -43,12 +43,13 @@ if( db.hasOwnProperty('mydb') == false ){
 const initState = JSON.parse(db.getItem('mydb'));
 const store = configureStore(switchVisible(initState));
 const history = syncHistoryWithStore(browserHistory, store);
+
 const node = (
       <Provider store={store}>
           <Router history={history}>
              <Route path="/">
               <IndexRoute component={App}/>
-              <Redirect from="All" to="#"/>
+              <Redirect from="#/All" to="#"/>
               <Route path="Starred" component={App}/>
               <Route path="Active" component={App}/>
               <Route path="Complete" component={App}/>

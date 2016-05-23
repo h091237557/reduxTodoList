@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "d6e08032cc0aa8fa7e0a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "2896b7c073f9d83fb254"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -2461,7 +2461,7 @@
 	// }
 	
 	var switchVisible = function switchVisible(state) {
-	  var pathname = location.pathname.slice(17);
+	  var pathname = location.hash.slice(2);
 	  switch (pathname) {
 	    case 'Active':
 	      return _extends({}, state, { visible: 'SHOW_ACTIVE' });
@@ -2480,6 +2480,7 @@
 	var initState = JSON.parse(db.getItem('mydb'));
 	var store = (0, _store2.default)(switchVisible(initState));
 	var history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.browserHistory, store);
+	
 	var node = _react2.default.createElement(
 	  _reactRedux.Provider,
 	  { store: store },
@@ -2490,7 +2491,7 @@
 	      _reactRouter.Route,
 	      { path: '/' },
 	      _react2.default.createElement(_reactRouter.IndexRoute, { component: _App.App }),
-	      _react2.default.createElement(_reactRouter.Redirect, { from: 'All', to: '#' }),
+	      _react2.default.createElement(_reactRouter.Redirect, { from: '#/All', to: '#' }),
 	      _react2.default.createElement(_reactRouter.Route, { path: 'Starred', component: _App.App }),
 	      _react2.default.createElement(_reactRouter.Route, { path: 'Active', component: _App.App }),
 	      _react2.default.createElement(_reactRouter.Route, { path: 'Complete', component: _App.App })
