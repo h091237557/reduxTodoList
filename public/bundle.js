@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "2896b7c073f9d83fb254"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "58de67e7fc6a0637b34c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -38415,7 +38415,7 @@
 	}, function (dispatch) {
 	  return _extends({}, (0, _redux.bindActionCreators)(TodoAction, dispatch), {
 	    redirect: function redirect(path) {
-	      dispatch((0, _reactRouterRedux.push)('#/' + path));
+	      dispatch((0, _reactRouterRedux.push)(path));
 	      // if (process.env.NODE_ENV === 'production') {
 	      //   dispatch(push(location+'#/'+path));
 	      // } else {

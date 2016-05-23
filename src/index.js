@@ -41,7 +41,8 @@ if( db.hasOwnProperty('mydb') == false ){
     db.setItem('mydb', JSON.stringify({ todos: [], visible: 'SHOW_ALL', routing: {locationBeforeTransitions:null} }));
 }
 const initState = JSON.parse(db.getItem('mydb'));
-const store = configureStore(switchVisible(initState));
+// const store = configureStore(switchVisible(initState));
+const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
 
 const node = (
