@@ -11,39 +11,11 @@ import { Router,
           useRouterHistory,
           Redirect}                                   from 'react-router';
 import { syncHistoryWithStore }                       from 'react-router-redux';
-import { createHashHistory }                          from 'history'
+import * as TodoAction                                from './actions/';
 
-const db = window.localStorage;
-// let path = "",pathname = "";
-// if (process.env.NODE_ENV === 'production') {
-//   path="/";
-//   pathname = location.hash.slice(2);
-// } else {
-//   path="/";
-//   pathname = location.pathname.slice(1);
-// }
-
-const switchVisible = (state) => {
-  let pathname = location.hash.slice(2);
-  switch (pathname) {
-    case 'Active':
-      return {...state,visible:'SHOW_ACTIVE'};
-    case 'Complete':
-      return {...state,visible:'SHOW_COMPLETE'};
-    case 'Starred':
-      return {...state,visible:'SHOW_STAR'};
-    default:
-      return state;
-  }
-}
-
-if( db.hasOwnProperty('mydb') == false ){
-    db.setItem('mydb', JSON.stringify({ todos: [], visible: 'SHOW_ALL', routing: {locationBeforeTransitions:null} }));
-}
-const initState = JSON.parse(db.getItem('mydb'));
-// const store = configureStore(switchVisible(initState));
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
+store.dispatch(TodoAction.getDbState());
 
 const node = (
       <Provider store={store}>

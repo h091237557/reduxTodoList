@@ -3,10 +3,12 @@ import createLogger                               from 'redux-logger';
 import rootReducer                                from '../reducers';
 import { browserHistory }                         from 'react-router';
 import { routerMiddleware }                       from 'react-router-redux';
+import thunk                                      from 'redux-thunk';
 import saveToLocalMiddleware                      from '../middleware/saveToLocalMiddleware';
 
 let finalCreateStore = compose(
     applyMiddleware(
+        thunk,
         createLogger({
         level: 'info',
         collapsed: true

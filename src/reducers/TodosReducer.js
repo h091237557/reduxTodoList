@@ -3,6 +3,8 @@ import todo   from './TodoReducer'
 
 function todos(state = [], action) {
   switch (action.type) {
+    case types.INIT_TODO:
+      return action.payload;
     case types.ADD_TODO:
       return [
         ...state,
