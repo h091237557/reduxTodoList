@@ -11,7 +11,7 @@ class VisibleState extends Component {
     }
     handleClick() {
       // this.props.SetVisibleTodo(this.props.filter);
-      this.props.onClick();
+      this.props.onClick(this.props.filter);
       this.props.redirect(this.props.children);
     }
 

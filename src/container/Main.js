@@ -26,10 +26,14 @@ class Main extends Component {
         super(props, context);
     }
 
+    switchVisible(visibleState) {
+      this.props.SetVisibleTodo(visibleState);
+    }
+
     render() {
         return (
           <main>
-            <TodoFilter {...this.props} />
+            <TodoFilter {...this.props} switchVisible = { (visibleState) => this.switchVisible(visibleState) } />
             <AddTodo {...this.props} />
             {React.cloneElement(this.props.children, { ...this.props })}
           </main>

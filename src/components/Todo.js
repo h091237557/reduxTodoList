@@ -45,19 +45,39 @@ class Todo extends Component {
           }
     }
 
+    starIcon (){
+      if( (this.state.itemHover && !this.props.isEdit) || this.props.star ){
+        return ( <a href="javascript:"
+                    onClick={ this.props.toggleStarTodo }
+                    className={classNames({ 'stared': this.props.star},'ctrlIcon')} >
+                      <i className={classNames({ 'fa-star-o': !this.props.star , 'fa-star': this.props.star},'fa','fa-2x')}
+                        aria-hidden="true"></i>
+                  </a> );
+      }else{
+        return '';
+      }
+    }
+
+    trashIcon (){
+      if(this.state.itemHover && !this.props.isEdit){
+        return ( <a href="javascript:" onClick={ this.props.deleteTodo } className="ctrlIcon">
+                              <i className="fa fa-trash fa-2x" aria-hidden="true"></i>
+                            </a> );
+      }else{
+        return '';
+      }
+    }
+
     render() {
         const toggleTodo = this.props.toggleTodo;
         const deleteTodo = this.props.deleteTodo;
         const toggleStarTodo = this.props.toggleStarTodo;
         const editTodo = this.props.editTodo;
         let text = this.state.text;
-        let trashIcon = ( <a href="javascript:" onClick={ deleteTodo } className="ctrlIcon">
-                            <i className="fa fa-trash fa-2x" aria-hidden="true"></i>
-                          </a> );
-        let starIcon = ( <a href="javascript:" onClick={ toggleStarTodo } className={classNames({ 'stared': this.props.star},'ctrlIcon')} >
-                          <i className={classNames({ 'fa-star-o': !this.props.star , 'fa-star': this.props.star},'fa','fa-2x')}
-                            aria-hidden="true"></i>
-                        </a> );
+        // let starIcon = ( <a href="javascript:" onClick={ toggleStarTodo } className={classNames({ 'stared': this.props.star},'ctrlIcon')} >
+        //                   <i className={classNames({ 'fa-star-o': !this.props.star , 'fa-star': this.props.star},'fa','fa-2x')}
+        //                     aria-hidden="true"></i>
+        //                 </a> );
 
         // onDoubleClick={ ()=> this.setState({isEdit: true})}
         // let ItemText = ( <a href="javascript:" onClick={ ()=> this.setState({isEdit: true}) }>
@@ -126,12 +146,12 @@ class Todo extends Component {
             }
         }
         // Hover
-        if(!this.state.itemHover || this.props.isEdit){
-          if(!this.props.star){
-            starIcon='';
-          }
-          trashIcon = '';
-        }
+        // if(!this.state.itemHover || this.props.isEdit){
+        //   if(!this.props.star){
+        //     starIcon='';
+        //   }
+        //   trashIcon = '';
+        // }
         return (
           <li className="clearfix item" onMouseEnter={this.handleItemHover.bind(this,'enter')} onMouseLeave={this.handleItemHover.bind(this,'leave')}>
               <div className="item-content">
@@ -139,8 +159,8 @@ class Todo extends Component {
                   {ItemText}
               </div>
               <div className="item-ctrl">
-                  {starIcon}
-                  {trashIcon}
+                  {this.starIcon()}
+                  {this.trashIcon()}
               </div>
           </li>
         )
