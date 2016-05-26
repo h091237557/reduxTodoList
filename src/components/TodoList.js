@@ -43,34 +43,10 @@ const TodoList = ({
             ).reverse();
   }
   return (
-    <div className={classNames({ 'list': todos.length !== 0, 'list-empty': todos.length === 0})} >
+    <ul className={classNames({ 'list': todos.length !== 0, 'list-empty': todos.length === 0})} >
       {Todos}
-    </div>);
+    </ul>);
 }
 
-
-
-const filter = (todos,visible) => {
-  switch (visible) {
-    case 'SHOW_ALL':
-      return todos;
-    case 'SHOW_ACTIVE':
-      return todos.filter( t => !t.completed);
-    case 'SHOW_COMPLETE':
-      return todos.filter( t => t.completed);
-    case 'SHOW_STAR':
-      return todos.filter( t => t.star);
-  }
-}
-
-export default connect(
-                    state => {
-                      return {
-                        todos: filter(state.todos,state.visible)
-                      }
-                    },
-                    (dispatch) => {
-                      return bindActionCreators(TodoAction, dispatch);
-                    }
-                )(TodoList);
+export default TodoList;
 

@@ -8,25 +8,30 @@ import { Router,
           IndexRoute,
           browserHistory,
           hashHistory,
-          useRouterHistory,
           Redirect}                                   from 'react-router';
 import { syncHistoryWithStore }                       from 'react-router-redux';
 import * as TodoAction                                from './actions/';
+import AllTodos                                       from './components/AllTodos';
+import StarredTodos                                   from './components/StarredTodos';
+import CompleteTodos                                  from './components/CompleteTodos';
+import ActiveTodos                                    from './components/ActiveTodos';
 
 const store = configureStore();
-const history = syncHistoryWithStore(browserHistory, store);
+const history = syncHistoryWithStore(hashHistory, store);
 store.dispatch(TodoAction.getDbState());
 
 const node = (
       <Provider store={store}>
           <Router history={history}>
-             <Route path="/">
-              <IndexRoute component={App}/>
-              <Redirect from="All" to="#"/>
-              <Route path="Starred" component={App}/>
-              <Route path="Active" component={App}/>
-              <Route path="Complete" component={App}/>
+             <Route path="/" component={App}>
+              <IndexRoute component={AllTodos}/>
+              <Route path="All" component={AllTodos}/>
+              <Route path="Starred" component={StarredTodos}/>
+              <Route path="Active" component={ActiveTodos}/>
+              <Route path="Complete" component={CompleteTodos}/>
               {/*
+              <IndexRoute component={AllTodos}/>
+              <Redirect from="All" to=""/>
                 <Redirect from="#/Starred" to='Starred' />
                 <Redirect from="#/Active" to='Active' />
                 <Redirect from="#/Complete" to='Complete' />

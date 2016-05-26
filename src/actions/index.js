@@ -4,9 +4,9 @@ import { push }                from 'react-router-redux';
 
 let id = 0;
 var db = window.localStorage;
-const lastState = JSON.parse(db.getItem('mydb'));
-console.log(lastState);
+let lastState = null;
 if( db.hasOwnProperty('mydb') != false ){
+    lastState = JSON.parse(db.getItem('mydb'));
     let todos = lastState.todos;
     let lastTodo = todos[todos.length -1];
     id = !!lastTodo? lastTodo.id : 0;
@@ -14,33 +14,9 @@ if( db.hasOwnProperty('mydb') != false ){
 
 export function getDbState() {
     return (dispatch,getState) => {
-        const curentPath = lastState.routing.locationBeforeTransitions.hash.slice(2);
-        switch (curentPath) {
-          case 'Active':
-              return setTimeout(() => {
-                dispatch(InitTodo(lastState.todos));
-                dispatch(SetVisibleTodo('SHOW_ACTIVE'));
-                dispatch(push('#/'+curentPath));
-              },0);
-          case 'Complete':
-              return setTimeout(() => {
-                dispatch(InitTodo(lastState.todos));
-                dispatch(SetVisibleTodo('SHOW_COMPLETE'));
-                dispatch(push('#/'+curentPath));
-              },0);
-          case 'Starred':
-              return setTimeout(() => {
-                dispatch(InitTodo(lastState.todos));
-                dispatch(SetVisibleTodo('SHOW_STAR'));
-                dispatch(push('#/'+curentPath));
-              },0);
-          default:
-              return setTimeout(() => {
-                dispatch(InitTodo(lastState.todos));
-                dispatch(SetVisibleTodo('SHOW_ALL'));
-                dispatch(push('#/'+curentPath));
-              },0);
-        }
+        if(lastState === null) return;
+        dispatch(InitTodo(lastState.todos));
+        dispatch(SetVisibleTodo(lastState.visible));
     }
 }
 

@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose }  from 'redux';
 import createLogger                               from 'redux-logger';
 import rootReducer                                from '../reducers';
-import { browserHistory }                         from 'react-router';
+import { browserHistory, hashHistory }            from 'react-router';
 import { routerMiddleware }                       from 'react-router-redux';
 import thunk                                      from 'redux-thunk';
 import saveToLocalMiddleware                      from '../middleware/saveToLocalMiddleware';
@@ -14,7 +14,7 @@ let finalCreateStore = compose(
         collapsed: true
       }),
       saveToLocalMiddleware(),
-      routerMiddleware(browserHistory)
+      routerMiddleware(hashHistory)
     )
 )(createStore);
 

@@ -4,7 +4,6 @@ export default function saveToLocalMiddleware( objMethods ) {
     return (next) => (action) => {
       let result = next(action);
       // db.setItem('mydb', JSON.stringify( {todos:store.getState().todos} ));
-      console.log(store.getState());
       db.setItem('mydb', JSON.stringify(store.getState()) );
       return result;
     };

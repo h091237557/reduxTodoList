@@ -1,27 +1,58 @@
 import React                    from 'react';
 import VisibleState             from './VisibleState';
 
-const Header = () => {
+const Nav = (props) => {
+  const showAll = () => {
+    props.SetVisibleTodo('SHOW_ALL');
+  };
+  const showStart = () => {
+    props.SetVisibleTodo('SHOW_ALL');
+  };
+  const showActive = () => {
+    props.SetVisibleTodo('SHOW_ALL');
+  };
+  const showCom = () => {
+    props.SetVisibleTodo('SHOW_ALL');
+  };
+
   return (
-    <div className="nav">
+    <nav className="nav">
       <ul className="clearfix">
-        <VisibleState filter='SHOW_ALL'>
+        <VisibleState {...props} onClick={ () => showAll() } filter='SHOW_ALL' >
           All
         </VisibleState>
-        <VisibleState filter='SHOW_STAR'>
+        <VisibleState {...props} onClick={ () => showStart() } filter='SHOW_STAR'>
           Starred
         </VisibleState>
-        <VisibleState filter='SHOW_ACTIVE'>
+        <VisibleState {...props} onClick={ () => showActive() } filter='SHOW_ACTIVE'>
           Active
         </VisibleState>
-        <VisibleState filter='SHOW_COMPLETE'>
+        <VisibleState {...props} onClick={ () => showCom() } filter='SHOW_COMPLETE'>
           Complete
         </VisibleState>
       </ul>
-    </div>
+    </nav>
   );
 };
 
 
-export default Header;
+export default Nav;
 
+  // return (
+  //   <nav className="nav">
+  //     <ul className="clearfix">
+  //       <VisibleState {...props} filter='SHOW_ALL' >
+  //         All
+  //       </VisibleState>
+  //       <VisibleState {...props} filter='SHOW_STAR'>
+  //         Starred
+  //       </VisibleState>
+  //       <VisibleState {...props} filter='SHOW_ACTIVE'>
+  //         Active
+  //       </VisibleState>
+  //       <VisibleState {...props} filter='SHOW_COMPLETE'>
+  //         Complete
+  //       </VisibleState>
+  //     </ul>
+  //   </nav>
+  // );

@@ -39,37 +39,40 @@ body {
     max-height: 100000px;
 }
 
-.index {
+header {
+  // margin-bottom: 20px;
+  .logo{
+    font-size: 7.5rem;
+    letter-spacing: 5px;
+    &-comment{
+      font-size: 1.5rem;
+      letter-spacing: normal;
+    }
+  }
+}
+
+main {
+  width: 455px;
+  padding-right: 30px;
+  margin: 0 auto;
+  .fixed{
+    position: fixed;
+    top:0;
+    width: inherit;
+    background-color: white;
+    z-index: 999999999999;
+    border-bottom: 2px solid #eeeeee;
+  }
+}
+
+.wrap {
   text-align: center;
   color:#27cc95;
   // margin-top: 160px;
   a {
     color:#27cc95;
   }
-  &__content {
-    width: 455px;
-    padding-right: 30px;
-    margin: 0 auto;
-    .fixed{
-      position: fixed;
-      top:0;
-      width: inherit;
-      background-color: white;
-      z-index: 999999999999;
-      border-bottom: 2px solid #eeeeee;
-    }
-  }
-  .logo {
-    // margin-bottom: 20px;
-    &-title {
-      font-size: 7.5rem;
-      letter-spacing: 5px;
-    }
-    &-comment{
-      font-size: 1.5rem;
-      letter-spacing: normal;
-    }
-  }
+
   .nav {
     margin: 15px auto;
     display: inline-block;

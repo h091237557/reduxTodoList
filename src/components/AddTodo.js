@@ -32,11 +32,11 @@ let TodosInput = ({ AddTodo }) => {
     </div>
   );
 };
-TodosInput = connect(
-    state => state,
-    dispatch => {
-      return bindActionCreators(TodoAction, dispatch);
-    }
-)(TodosInput);
+// TodosInput = connect(
+//     state => state,
+//     dispatch => {
+//       return bindActionCreators(TodoAction, dispatch);
+//     }
+// )(TodosInput);
 
 export default TodosInput;

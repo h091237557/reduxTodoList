@@ -3,9 +3,9 @@ require('../scss/main.scss');
 require("font-awesome-webpack");
 import React, { Component }   from 'react';
 import AddTodo                from './components/AddTodo';
-import TodoList               from './components/TodoList';
 import TodoFilter             from './components/TodoFilter';
 import classNames             from 'classnames';
+import Main                   from './container/Main';
 
 export class App extends Component {
   todoOffsetTop = null
@@ -26,37 +26,53 @@ export class App extends Component {
       this.fixStyle = {};
       this.setState({setFix: false});    }
   }
+
   render() {
-    console.log(this.props.location)
     return (
-      <section className="index">
-        <div className="l-container">
-          <div className="logo">
-            <p className="logo-title">
+      <section className="wrap">
+          <header>
+            <p className="logo">
               TODO<span className="logo-comment">beta</span>
             </p>
-          </div>
-          <div className="index__content"
-                ref = {node => {
-                  if(node === null) return;
-                  if(this.todoOffsetTop !== null) return;
-                  this.todoOffsetTop = node.getBoundingClientRect().top;
-                }}>
-              <div className={classNames({ 'fixed': this.state.setFix })}
-                    ref = {node => {
-                        if(node === null) return;
-                        if(this.fixedheight !== null) return;
-                        this.fixedheight = node.clientHeight;
-                    }}>
-                <TodoFilter />
-                <AddTodo />
-              </div>
-              <div style={this.fixStyle}>
-                <TodoList className="asdf"/>
-              </div>
-          </div>
-        </div>
+          </header>
+          <Main location={this.props.location}>
+            {this.props.children}
+          </Main>
       </section>
     );
   }
 }
+
+// render() {
+//     console.log(this.props.location)
+//     return (
+//       <section className="index">
+//         <div className="l-container">
+//           <div className="logo">
+//             <p className="logo-title">
+//               TODO<span className="logo-comment">beta</span>
+//             </p>
+//           </div>
+//           <div className="index__content"
+//                 ref = {node => {
+//                   if(node === null) return;
+//                   if(this.todoOffsetTop !== null) return;
+//                   this.todoOffsetTop = node.getBoundingClientRect().top;
+//                 }}>
+//               <div className={classNames({ 'fixed': this.state.setFix })}
+//                     ref = {node => {
+//                         if(node === null) return;
+//                         if(this.fixedheight !== null) return;
+//                         this.fixedheight = node.clientHeight;
+//                     }}>
+//                 <TodoFilter />
+//                 <AddTodo />
+//               </div>
+//               <div style={this.fixStyle}>
+//                 <TodoList className="asdf"/>
+//               </div>
+//           </div>
+//         </div>
+//       </section>
+//     );
+//   }

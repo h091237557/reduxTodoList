@@ -133,18 +133,16 @@ class Todo extends Component {
           trashIcon = '';
         }
         return (
-          <ul className="clearfix" onMouseEnter={this.handleItemHover.bind(this,'enter')} onMouseLeave={this.handleItemHover.bind(this,'leave')}>
-            <li className="item">
-                <div className="item-content">
-                    {itemToggle}
-                    {ItemText}
-                </div>
-                <div className="item-ctrl">
-                    {starIcon}
-                    {trashIcon}
-                </div>
-            </li>
-          </ul>
+          <li className="clearfix item" onMouseEnter={this.handleItemHover.bind(this,'enter')} onMouseLeave={this.handleItemHover.bind(this,'leave')}>
+              <div className="item-content">
+                  {itemToggle}
+                  {ItemText}
+              </div>
+              <div className="item-ctrl">
+                  {starIcon}
+                  {trashIcon}
+              </div>
+          </li>
         )
     }
 }
