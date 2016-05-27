@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "a00414f8c3c4480ee37e"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "91f2487ca5f6081d8a28"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -37881,19 +37881,6 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var Nav = function Nav(props) {
-	  var showAll = function showAll() {
-	    props.SetVisibleTodo('SHOW_ALL');
-	  };
-	  var showStart = function showStart() {
-	    props.SetVisibleTodo('SHOW_ALL');
-	  };
-	  var showActive = function showActive() {
-	    props.SetVisibleTodo('SHOW_ALL');
-	  };
-	  var showCom = function showCom() {
-	    props.SetVisibleTodo('SHOW_ALL');
-	  };
-	
 	  return _react2.default.createElement(
 	    'nav',
 	    { className: 'nav' },
@@ -37902,29 +37889,29 @@
 	      { className: 'clearfix' },
 	      _react2.default.createElement(
 	        _VisibleState2.default,
-	        _extends({}, props, { onClick: function onClick() {
-	            return showAll();
+	        _extends({}, props, { onClick: function onClick(visibleState) {
+	            return props.switchVisible(visibleState);
 	          }, filter: 'SHOW_ALL' }),
 	        'All'
 	      ),
 	      _react2.default.createElement(
 	        _VisibleState2.default,
-	        _extends({}, props, { onClick: function onClick() {
-	            return showStart();
+	        _extends({}, props, { onClick: function onClick(visibleState) {
+	            return props.switchVisible(visibleState);
 	          }, filter: 'SHOW_STAR' }),
 	        'Starred'
 	      ),
 	      _react2.default.createElement(
 	        _VisibleState2.default,
-	        _extends({}, props, { onClick: function onClick() {
-	            return showActive();
+	        _extends({}, props, { onClick: function onClick(visibleState) {
+	            return props.switchVisible(visibleState);
 	          }, filter: 'SHOW_ACTIVE' }),
 	        'Active'
 	      ),
 	      _react2.default.createElement(
 	        _VisibleState2.default,
-	        _extends({}, props, { onClick: function onClick() {
-	            return showCom();
+	        _extends({}, props, { onClick: function onClick(visibleState) {
+	            return props.switchVisible(visibleState);
 	          }, filter: 'SHOW_COMPLETE' }),
 	        'Complete'
 	      )
@@ -38047,7 +38034,7 @@
 	    key: 'handleClick',
 	    value: function handleClick() {
 	      // this.props.SetVisibleTodo(this.props.filter);
-	      this.props.onClick();
+	      this.props.onClick(this.props.filter);
 	      this.props.redirect(this.props.children);
 	    }
 	  }, {
@@ -38258,12 +38245,21 @@
 	  }
 	
 	  _createClass(Main, [{
+	    key: 'switchVisible',
+	    value: function switchVisible(visibleState) {
+	      this.props.SetVisibleTodo(visibleState);
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+	
 	      return _react3.default.createElement(
 	        'main',
 	        null,
-	        _react3.default.createElement(_TodoFilter2.default, this.props),
+	        _react3.default.createElement(_TodoFilter2.default, _extends({}, this.props, { switchVisible: function switchVisible(visibleState) {
+	            return _this2.switchVisible(visibleState);
+	          } })),
 	        _react3.default.createElement(_AddTodo2.default, this.props),
 	        _react3.default.cloneElement(this.props.children, _extends({}, this.props))
 	      );
@@ -38506,26 +38502,90 @@
 	      }
 	    }
 	  }, {
+	    key: 'starIcon',
+	    value: function starIcon() {
+	      if (this.state.itemHover && !this.props.isEdit || this.props.star) {
+	        return _react3.default.createElement(
+	          'a',
+	          { href: 'javascript:',
+	            onClick: this.props.toggleStarTodo,
+	            className: (0, _classnames2.default)({ 'stared': this.props.star }, 'ctrlIcon') },
+	          _react3.default.createElement('i', { className: (0, _classnames2.default)({ 'fa-star-o': !this.props.star, 'fa-star': this.props.star }, 'fa', 'fa-2x'),
+	            'aria-hidden': 'true' })
+	        );
+	      } else {
+	        return '';
+	      }
+	    }
+	  }, {
+	    key: 'trashIcon',
+	    value: function trashIcon() {
+	      if (this.state.itemHover && !this.props.isEdit) {
+	        return _react3.default.createElement(
+	          'a',
+	          { href: 'javascript:', onClick: this.props.deleteTodo, className: 'ctrlIcon' },
+	          _react3.default.createElement('i', { className: 'fa fa-trash fa-2x', 'aria-hidden': 'true' })
+	        );
+	      } else {
+	        return '';
+	      }
+	    }
+	  }, {
+	    key: 'ItemText',
+	    value: function ItemText() {
+	      var _this2 = this;
+	
+	      if (this.props.completed) {
+	        return _react3.default.createElement(
+	          'span',
+	          { href: 'javascript:' },
+	          _react3.default.createElement(
+	            'p',
+	            { className: (0, _classnames2.default)({ 'complete': this.props.completed }, 'text') },
+	            this.state.text
+	          )
+	        );
+	      } else if (this.props.isEdit) {
+	        return _react3.default.createElement('input', { className: 'text',
+	          style: { cursor: 'pointer' },
+	          ref: function ref(input) {
+	            if (input === null) return;
+	            input.focus();
+	          },
+	          type: 'text', value: text,
+	          onChange: this.changeContent,
+	          onblur: this._handleKeyPress,
+	          onKeyPress: this._handleKeyPress });
+	      } else {
+	        return _react3.default.createElement(
+	          'a',
+	          { href: 'javascript:',
+	            onClick: function onClick() {
+	              if (_this2.props.isEdit) return;
+	              _this2.props.editTodo();
+	            } },
+	          _react3.default.createElement(
+	            'p',
+	            { className: (0, _classnames2.default)({ 'complete': this.props.completed, 'textHover': this.state.iconHover }, 'text') },
+	            this.state.text
+	          )
+	        );
+	      }
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this2 = this;
+	      var _this3 = this;
 	
 	      var toggleTodo = this.props.toggleTodo;
 	      var deleteTodo = this.props.deleteTodo;
 	      var toggleStarTodo = this.props.toggleStarTodo;
 	      var editTodo = this.props.editTodo;
 	      var text = this.state.text;
-	      var trashIcon = _react3.default.createElement(
-	        'a',
-	        { href: 'javascript:', onClick: deleteTodo, className: 'ctrlIcon' },
-	        _react3.default.createElement('i', { className: 'fa fa-trash fa-2x', 'aria-hidden': 'true' })
-	      );
-	      var starIcon = _react3.default.createElement(
-	        'a',
-	        { href: 'javascript:', onClick: toggleStarTodo, className: (0, _classnames2.default)({ 'stared': this.props.star }, 'ctrlIcon') },
-	        _react3.default.createElement('i', { className: (0, _classnames2.default)({ 'fa-star-o': !this.props.star, 'fa-star': this.props.star }, 'fa', 'fa-2x'),
-	          'aria-hidden': 'true' })
-	      );
+	      // let starIcon = ( <a href="javascript:" onClick={ toggleStarTodo } className={classNames({ 'stared': this.props.star},'ctrlIcon')} >
+	      //                   <i className={classNames({ 'fa-star-o': !this.props.star , 'fa-star': this.props.star},'fa','fa-2x')}
+	      //                     aria-hidden="true"></i>
+	      //                 </a> );
 	
 	      // onDoubleClick={ ()=> this.setState({isEdit: true})}
 	      // let ItemText = ( <a href="javascript:" onClick={ ()=> this.setState({isEdit: true}) }>
@@ -38533,24 +38593,22 @@
 	      //                     {text}
 	      //                   </p>
 	      //                  </a> );
-	      var ItemText = _react3.default.createElement(
-	        'a',
-	        { href: 'javascript:', onClick: function onClick() {
-	            if (_this2.props.isEdit) return;
-	            editTodo();
-	          } },
-	        _react3.default.createElement(
-	          'p',
-	          { className: (0, _classnames2.default)({ 'complete': this.props.completed, 'textHover': this.state.iconHover }, 'text') },
-	          text
-	        )
-	      );
+	      // let ItemText = ( <a href="javascript:" onClick={
+	      //                                           () => {
+	      //                                             if(this.props.isEdit) return;
+	      //                                             editTodo();
+	      //                                           }
+	      //                                         }>
+	      //                   <p className={ classNames({ 'complete': this.props.completed , 'textHover' : this.state.iconHover}, 'text' )}>
+	      //                     {text}
+	      //                   </p>
+	      //                  </a> );
 	
 	      var itemToggle = _react3.default.createElement(
 	        'a',
 	        { href: 'javascript:',
 	          onClick: function onClick() {
-	            if (_this2.props.isEdit) return;
+	            if (_this3.props.isEdit) return;
 	            toggleTodo();
 	          },
 	          onMouseEnter: this.handleIconHover.bind(this, 'enter'),
@@ -38571,30 +38629,26 @@
 	            className: (0, _classnames2.default)({ 'complete': this.props.completed }, 'textIcon') },
 	          _react3.default.createElement('i', { className: 'fa fa-check-circle fa-3x', 'aria-hidden': 'true' })
 	        );
-	        ItemText = _react3.default.createElement(
-	          'span',
-	          { href: 'javascript:' },
-	          _react3.default.createElement(
-	            'p',
-	            { className: (0, _classnames2.default)({ 'complete': this.props.completed }, 'text') },
-	            text
-	          )
-	        );
+	        // ItemText = ( <span href="javascript:">
+	        //               <p className={ classNames({ 'complete': this.props.completed}, 'text' )}>
+	        //                 {text}
+	        //               </p>
+	        //              </span> );
 	        // trashIcon = '';
 	      }
 	      // Edit
 	      if (this.props.isEdit) {
 	        if (this.props.editCurrent) {
-	          ItemText = _react3.default.createElement('input', { className: 'text',
-	            style: { cursor: 'pointer' },
-	            ref: function ref(input) {
-	              if (input === null) return;
-	              input.focus();
-	            },
-	            type: 'text', value: text,
-	            onChange: this.changeContent,
-	            onblur: this._handleKeyPress,
-	            onKeyPress: this._handleKeyPress });
+	          // ItemText = (<input className="text"
+	          //                   style={{cursor: 'pointer'}}
+	          //                   ref={ input => {
+	          //                         if(input === null) return;
+	          //                           input.focus();
+	          //                       }}
+	          //                   type='text' value={text}
+	          //                   onChange={ this.changeContent }
+	          //                   onblur={ this._handleKeyPress }
+	          //                   onKeyPress = {this._handleKeyPress}/>);
 	          itemToggle = _react3.default.createElement(
 	            'span',
 	            { className: (0, _classnames2.default)({ 'complete': this.props.completed }, 'textIcon'),
@@ -38604,12 +38658,12 @@
 	        }
 	      }
 	      // Hover
-	      if (!this.state.itemHover || this.props.isEdit) {
-	        if (!this.props.star) {
-	          starIcon = '';
-	        }
-	        trashIcon = '';
-	      }
+	      // if(!this.state.itemHover || this.props.isEdit){
+	      //   if(!this.props.star){
+	      //     starIcon='';
+	      //   }
+	      //   trashIcon = '';
+	      // }
 	      return _react3.default.createElement(
 	        'li',
 	        { className: 'clearfix item', onMouseEnter: this.handleItemHover.bind(this, 'enter'), onMouseLeave: this.handleItemHover.bind(this, 'leave') },
@@ -38622,8 +38676,8 @@
 	        _react3.default.createElement(
 	          'div',
 	          { className: 'item-ctrl' },
-	          starIcon,
-	          trashIcon
+	          this.starIcon(),
+	          this.trashIcon()
 	        )
 	      );
 	    }
