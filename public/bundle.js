@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "91f2487ca5f6081d8a28"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "e19eb29c1fd6579e6a99"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -38545,14 +38545,15 @@
 	            this.state.text
 	          )
 	        );
-	      } else if (this.props.isEdit) {
-	        return _react3.default.createElement('input', { className: 'text',
+	      } else if (this.props.isEdit && this.props.editCurrent) {
+	        return _react3.default.createElement('input', {
+	          className: 'text',
 	          style: { cursor: 'pointer' },
 	          ref: function ref(input) {
 	            if (input === null) return;
 	            input.focus();
 	          },
-	          type: 'text', value: text,
+	          type: 'text', value: this.state.text,
 	          onChange: this.changeContent,
 	          onblur: this._handleKeyPress,
 	          onKeyPress: this._handleKeyPress });
@@ -38573,105 +38574,55 @@
 	      }
 	    }
 	  }, {
-	    key: 'render',
-	    value: function render() {
+	    key: 'itemToggle',
+	    value: function itemToggle() {
 	      var _this3 = this;
 	
-	      var toggleTodo = this.props.toggleTodo;
-	      var deleteTodo = this.props.deleteTodo;
-	      var toggleStarTodo = this.props.toggleStarTodo;
-	      var editTodo = this.props.editTodo;
-	      var text = this.state.text;
-	      // let starIcon = ( <a href="javascript:" onClick={ toggleStarTodo } className={classNames({ 'stared': this.props.star},'ctrlIcon')} >
-	      //                   <i className={classNames({ 'fa-star-o': !this.props.star , 'fa-star': this.props.star},'fa','fa-2x')}
-	      //                     aria-hidden="true"></i>
-	      //                 </a> );
-	
-	      // onDoubleClick={ ()=> this.setState({isEdit: true})}
-	      // let ItemText = ( <a href="javascript:" onClick={ ()=> this.setState({isEdit: true}) }>
-	      //                   <p className={ classNames({ 'complete': this.props.completed , 'textHover' : this.state.iconHover}, 'text' )}>
-	      //                     {text}
-	      //                   </p>
-	      //                  </a> );
-	      // let ItemText = ( <a href="javascript:" onClick={
-	      //                                           () => {
-	      //                                             if(this.props.isEdit) return;
-	      //                                             editTodo();
-	      //                                           }
-	      //                                         }>
-	      //                   <p className={ classNames({ 'complete': this.props.completed , 'textHover' : this.state.iconHover}, 'text' )}>
-	      //                     {text}
-	      //                   </p>
-	      //                  </a> );
-	
-	      var itemToggle = _react3.default.createElement(
-	        'a',
-	        { href: 'javascript:',
-	          onClick: function onClick() {
-	            if (_this3.props.isEdit) return;
-	            toggleTodo();
-	          },
-	          onMouseEnter: this.handleIconHover.bind(this, 'enter'),
-	          onMouseLeave: this.handleIconHover.bind(this, 'leave'),
-	          className: 'textIcon' },
-	        _react3.default.createElement('i', { className: (0, _classnames2.default)({
-	            'fa-genderless': !this.state.iconHover,
-	            'fa-check-circle': this.state.iconHover
-	          }, 'fa', 'fa-3x'),
-	          'aria-hidden': 'true' })
-	      );
-	      // Completed
 	      if (this.props.completed) {
-	        itemToggle = _react3.default.createElement(
+	        return _react3.default.createElement(
 	          'a',
 	          { href: 'javascript:',
-	            onClick: toggleTodo,
+	            onClick: this.props.toggleTodo,
 	            className: (0, _classnames2.default)({ 'complete': this.props.completed }, 'textIcon') },
 	          _react3.default.createElement('i', { className: 'fa fa-check-circle fa-3x', 'aria-hidden': 'true' })
 	        );
-	        // ItemText = ( <span href="javascript:">
-	        //               <p className={ classNames({ 'complete': this.props.completed}, 'text' )}>
-	        //                 {text}
-	        //               </p>
-	        //              </span> );
-	        // trashIcon = '';
+	      } else if (this.props.isEdit && this.props.editCurrent) {
+	        return _react3.default.createElement(
+	          'span',
+	          { className: (0, _classnames2.default)({ 'complete': this.props.completed }, 'textIcon'),
+	            style: { 'color': '#717677' } },
+	          _react3.default.createElement('i', { className: 'fa fa-genderless fa-3x', 'aria-hidden': 'true' })
+	        );
+	      } else {
+	        return _react3.default.createElement(
+	          'a',
+	          { href: 'javascript:',
+	            onClick: function onClick() {
+	              if (_this3.props.isEdit) return;
+	              _this3.props.toggleTodo();
+	            },
+	            onMouseEnter: this.handleIconHover.bind(this, 'enter'),
+	            onMouseLeave: this.handleIconHover.bind(this, 'leave'),
+	            className: 'textIcon' },
+	          _react3.default.createElement('i', { className: (0, _classnames2.default)({
+	              'fa-genderless': !this.state.iconHover,
+	              'fa-check-circle': this.state.iconHover
+	            }, 'fa', 'fa-3x'),
+	            'aria-hidden': 'true' })
+	        );
 	      }
-	      // Edit
-	      if (this.props.isEdit) {
-	        if (this.props.editCurrent) {
-	          // ItemText = (<input className="text"
-	          //                   style={{cursor: 'pointer'}}
-	          //                   ref={ input => {
-	          //                         if(input === null) return;
-	          //                           input.focus();
-	          //                       }}
-	          //                   type='text' value={text}
-	          //                   onChange={ this.changeContent }
-	          //                   onblur={ this._handleKeyPress }
-	          //                   onKeyPress = {this._handleKeyPress}/>);
-	          itemToggle = _react3.default.createElement(
-	            'span',
-	            { className: (0, _classnames2.default)({ 'complete': this.props.completed }, 'textIcon'),
-	              style: { 'color': '#717677' } },
-	            _react3.default.createElement('i', { className: 'fa fa-genderless fa-3x', 'aria-hidden': 'true' })
-	          );
-	        }
-	      }
-	      // Hover
-	      // if(!this.state.itemHover || this.props.isEdit){
-	      //   if(!this.props.star){
-	      //     starIcon='';
-	      //   }
-	      //   trashIcon = '';
-	      // }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
 	      return _react3.default.createElement(
 	        'li',
 	        { className: 'clearfix item', onMouseEnter: this.handleItemHover.bind(this, 'enter'), onMouseLeave: this.handleItemHover.bind(this, 'leave') },
 	        _react3.default.createElement(
 	          'div',
 	          { className: 'item-content' },
-	          itemToggle,
-	          ItemText
+	          this.itemToggle(),
+	          this.ItemText()
 	        ),
 	        _react3.default.createElement(
 	          'div',
