@@ -44,7 +44,6 @@ main.index {
   .contentText {
     display: inline-block;
     line-height: 2em;
-    // font-size: 2em;
     &.contentText-complete{
       color: $c-nav;
       text-decoration: line-through;
@@ -55,12 +54,11 @@ main.index {
   }
   .inputText{
     color: #717677;
-    // font-size: 2em;
     border: 0;
   }
 
   &-empty {
-    // font-size: 2em;
+    font-size: 1.5em;
     margin-top: 85px;
     color: $c-list-text;
   }

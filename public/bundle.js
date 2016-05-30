@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f1457abccf47fd8d4ab1"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "d9382a1d47762e249ffa"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -36778,17 +36778,11 @@
 	      _react2.default.createElement(
 	        'a',
 	        { href: 'javascript:' },
-	        _react2.default.createElement('i', { className: 'fa fa-plus fa-3x', 'aria-hidden': 'true' })
+	        _react2.default.createElement('i', { className: 'fa fa-plus fa-1x', 'aria-hidden': 'true' })
 	      )
 	    )
 	  );
 	};
-	// TodosInput = connect(
-	//     state => state,
-	//     dispatch => {
-	//       return bindActionCreators(TodoAction, dispatch);
-	//     }
-	// )(TodosInput);
 	
 	exports.default = TodosInput;
 
@@ -37919,25 +37913,6 @@
 	};
 	
 	exports.default = Nav;
-	
-	// return (
-	//   <nav className="nav">
-	//     <ul className="clearfix">
-	//       <VisibleState {...props} filter='SHOW_ALL' >
-	//         All
-	//       </VisibleState>
-	//       <VisibleState {...props} filter='SHOW_STAR'>
-	//         Starred
-	//       </VisibleState>
-	//       <VisibleState {...props} filter='SHOW_ACTIVE'>
-	//         Active
-	//       </VisibleState>
-	//       <VisibleState {...props} filter='SHOW_COMPLETE'>
-	//         Complete
-	//       </VisibleState>
-	//     </ul>
-	//   </nav>
-	// );
 
 /***/ },
 /* 427 */
@@ -38032,7 +38007,6 @@
 	  _createClass(VisibleState, [{
 	    key: 'handleClick',
 	    value: function handleClick() {
-	      // this.props.SetVisibleTodo(this.props.filter);
 	      this.props.onClick(this.props.filter);
 	      this.props.redirect(this.props.children);
 	    }
@@ -38457,25 +38431,6 @@
 	
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Todo).call(this, props, context));
 	
-	    _this.itemToggle_completed = function () {
-	      return _react3.default.createElement(
-	        'a',
-	        { href: 'javascript:',
-	          onClick: _this.props.toggleTodo,
-	          className: (0, _classnames2.default)({ 'complete': _this.props.completed }, 'textIcon') },
-	        _react3.default.createElement('i', { className: 'fa fa-check-circle fa-3x', 'aria-hidden': 'true' })
-	      );
-	    };
-	
-	    _this.itemToggle_edit = function () {
-	      return _react3.default.createElement(
-	        'span',
-	        { className: (0, _classnames2.default)({ 'complete': _this.props.completed }, 'textIcon'),
-	          style: { 'color': '#717677' } },
-	        _react3.default.createElement('i', { className: 'fa fa-genderless fa-3x', 'aria-hidden': 'true' })
-	      );
-	    };
-	
 	    _this.state = {
 	      isEdit: false,
 	      isIconHovering: false,
@@ -38522,15 +38477,15 @@
 	    key: 'starIcon',
 	    value: function starIcon() {
 	      var style = {
-	        display: this.state.itemHover && !this.props.isEdit || this.props.star ? '' : ''
+	        display: this.state.itemHover && !this.props.isEdit || this.props.star ? '' : 'none'
 	      };
 	      return _react3.default.createElement(
 	        'a',
 	        { href: 'javascript:',
 	          onClick: this.props.toggleStarTodo,
-	          className: (0, _classnames2.default)({ 'stared': this.props.star }, 'ctrlIcon'),
+	          className: (0, _classnames2.default)({ 'ctrlIcon-stared': this.props.star }, 'ctrlIcon'),
 	          style: style },
-	        _react3.default.createElement('i', { className: (0, _classnames2.default)({ 'fa-star-o': !this.props.star, 'fa-star': this.props.star }, 'fa', 'fa-2x'),
+	        _react3.default.createElement('i', { className: (0, _classnames2.default)({ 'fa-star-o': !this.props.star, 'fa-star': this.props.star }, 'fa', 'fa-1x'),
 	          'aria-hidden': 'true' })
 	      );
 	    }
@@ -38538,7 +38493,7 @@
 	    key: 'trashIcon',
 	    value: function trashIcon() {
 	      var style = {
-	        display: this.state.itemHover && !this.props.isEdit ? '' : ''
+	        display: this.state.itemHover && !this.props.isEdit ? '' : 'none'
 	      };
 	      return _react3.default.createElement(
 	        'a',
@@ -38546,7 +38501,7 @@
 	          onClick: this.props.deleteTodo,
 	          className: 'ctrlIcon',
 	          style: style },
-	        _react3.default.createElement('i', { className: 'fa fa-trash fa-2x', 'aria-hidden': 'true' })
+	        _react3.default.createElement('i', { className: 'fa fa-trash fa-1x', 'aria-hidden': 'true' })
 	      );
 	    }
 	  }, {
@@ -38557,7 +38512,7 @@
 	        null,
 	        _react3.default.createElement(
 	          'p',
-	          { className: (0, _classnames2.default)({ 'complete': this.props.completed }, 'text') },
+	          { className: (0, _classnames2.default)({ 'contentText-complete': this.props.completed }, 'contentText') },
 	          this.state.text
 	        )
 	      );
@@ -38598,6 +38553,27 @@
 	      );
 	    }
 	  }, {
+	    key: 'itemToggle_completed',
+	    value: function itemToggle_completed() {
+	      return _react3.default.createElement(
+	        'a',
+	        { href: 'javascript:',
+	          onClick: this.props.toggleTodo,
+	          className: (0, _classnames2.default)({ 'textIcon-complete': this.props.completed }, 'textIcon') },
+	        _react3.default.createElement('i', { className: 'fa fa-check-circle fa-1x', 'aria-hidden': 'true' })
+	      );
+	    }
+	  }, {
+	    key: 'itemToggle_edit',
+	    value: function itemToggle_edit() {
+	      return _react3.default.createElement(
+	        'span',
+	        { className: (0, _classnames2.default)({ 'complete': this.props.completed }, 'textIcon'),
+	          style: { 'color': '#717677' } },
+	        _react3.default.createElement('i', { className: 'fa fa-genderless fa-1x', 'aria-hidden': 'true' })
+	      );
+	    }
+	  }, {
 	    key: 'itemToggle',
 	    value: function itemToggle() {
 	      var _this3 = this;
@@ -38615,7 +38591,7 @@
 	        _react3.default.createElement('i', { className: (0, _classnames2.default)({
 	            'fa-genderless': !this.state.isIconHovering,
 	            'fa-check-circle': this.state.isIconHovering
-	          }, 'fa', 'fa-3x'),
+	          }, 'fa', 'fa-1x'),
 	          'aria-hidden': 'true' })
 	      );
 	    }
@@ -38700,7 +38676,7 @@
 	
 	
 	// module
-	exports.push([module.id, "@charset \"UTF-8\";\n/*\n  Copyright (c) 2011, Yahoo! Inc. All rights reserved.\n  Code licensed under the BSD License:\n  http://developer.yahoo.com/yui/license.html\n  version: 2.9.0\n*/\nbody {\n  font: 13px/1.231 arial,helvetica,clean,sans-serif;\n  *font-size: small;\n  *font: x-small; }\n\nselect, input, textarea, button {\n  font: 99% arial,helvetica,clean,sans-serif; }\n\ntable {\n  font-size: inherit;\n  font: 100%; }\n\npre, code, kbd, samp, tt {\n  font-family: monospace;\n  *font-size: 108%;\n  line-height: 100%; }\n\n/*\n  Copyright (c) 2011, Yahoo! Inc. All rights reserved.\n  Code licensed under the BSD License:\n  http://developer.yahoo.com/yui/license.html\n  version: 2.9.0\n*/\nhtml {\n  color: #000;\n  background: #FFF; }\n\nbody, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, select, p, blockquote, th, td {\n  margin: 0;\n  padding: 0; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\nfieldset, img {\n  border: 0; }\n\naddress, button, caption, cite, code, dfn, em, input, optgroup, option, select, strong, textarea, th, var {\n  font: inherit; }\n\ndel, ins {\n  text-decoration: none; }\n\nli {\n  list-style: none; }\n\ncaption, th {\n  text-align: left; }\n\nh1, h2, h3, h4, h5, h6 {\n  font-size: 100%;\n  font-weight: normal; }\n\nq:before, q:after {\n  content: ''; }\n\nabbr, acronym {\n  border: 0;\n  font-variant: normal; }\n\nsup {\n  vertical-align: baseline; }\n\nsub {\n  vertical-align: baseline; }\n\nlegend {\n  color: #000; }\n\n/*\n  _reset\n\n  http://meyerweb.com/eric/tools/css/reset/\n  v2.0 | 20110126\n  License: none (public domain)\n*/\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/*\n  HTML5 display-role reset for older browsers\n*/\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\na {\n  outline: 0;\n  text-decoration: none; }\n\n.hide-text {\n  overflow: hidden;\n  padding: 0;\n  /* 1 */\n  text-indent: 101%;\n  white-space: nowrap; }\n\n.visually-hidden {\n  border: 0;\n  clip: rect(0 0 0 0);\n  height: 1px;\n  margin: -1px;\n  overflow: hidden;\n  padding: 0;\n  position: absolute;\n  width: 1px; }\n\n.mb-only {\n  display: none; }\n  @media (max-width: 640px) and (min-width: 0) {\n    .mb-only {\n      display: block; } }\n\n* {\n  padding: 0;\n  margin: 0; }\n\nhtml {\n  background: #ecf0f1;\n  color: #fff;\n  font-family: \"\\5FAE\\8EDF\\6B63\\9ED1\\9AD4\", \"Microsoft JhengHei\", Arial, Verdana, Arial, Helvetica, sans-serif, \"STHeiti Light\", \"\\5137\\9ED1   Pro\", \"LiHei Pro\", \"Microsoft Yahei\", \"Microsoft JhengHei\", \"\\65B0\\7D30\\660E\\9AD4\" !important;\n  font-size: 16px;\n  line-height: 1.5;\n  height: 100%;\n  box-sizing: border-box; }\n\nbody {\n  height: 100%;\n  font-size: 100%; }\n\n*, *::before, *::after {\n  box-sizing: inherit; }\n\ntextarea:focus, input:focus {\n  outline: none; }\n\nh1, .h1,\nh2, .h2,\nh3, .h3,\nh4, .h4 {\n  font-family: \"OpenSans\", sans-serif;\n  font-weight: bold;\n  line-height: 1.2;\n  word-spacing: 0.1em;\n  margin-bottom: 1.25em;\n  margin-top: 0; }\n\np, span, div, dl, dd, dt {\n  word-spacing: 0.1em; }\n\na {\n  color: #27cc95;\n  text-decoration: none; }\n  a:hover, a:focus {\n    color: #76dafe; }\n\nheader .logo {\n  font-size: 7.5em;\n  letter-spacing: 5px; }\n  header .logo-comment {\n    font-size: 0.2em;\n    letter-spacing: normal; }\n\n.nav {\n  margin: 15px auto;\n  display: inline-block; }\n  .nav a {\n    color: #717677; }\n    .nav a:hover {\n      color: #27cc95; }\n    .nav a.active {\n      color: #27cc95; }\n  .nav-item {\n    float: left;\n    padding: 0 20px;\n    border: 0; }\n\n.container {\n  max-width: 60em;\n  margin: 0 auto; }\n\n.column {\n  margin: 0 3em; }\n\n.bg {\n  min-height: 100%;\n  min-width: 100%;\n  background: -moz-linear-gradient(top, #f8fdff 0%, ‪ #‎41d1d4‬ 100%);\n  /* FF3.6-15 */\n  background: -webkit-linear-gradient(top, #f8fdff 0%, #41d1d4 100%);\n  /* Chrome10-25,Safari5.1-6 */\n  background: linear-gradient(to bottom, #f8fdff 0%, #41d1d4 100%); }\n\n.wrap {\n  margin: 0 auto;\n  text-align: center;\n  width: 640px;\n  position: relative;\n  color: #27cc95; }\n\n.addTodo {\n  height: 70px;\n  width: 100%;\n  border: 1px solid #eee;\n  border-bottom: 0;\n  background: #fff;\n  overflow: hidden; }\n  .addTodo-input {\n    height: 100%;\n    width: 80%;\n    border: 0;\n    font-size: 2em;\n    color: #717677; }\n  .addTodo-btn {\n    width: 10%;\n    display: inline-block;\n    vertical-align: middle; }\n\nmain.index {\n  width: 455px;\n  padding-right: 30px;\n  margin: 0 auto; }\n  main.index .fixed {\n    position: fixed;\n    top: 0;\n    width: inherit;\n    background-color: white;\n    z-index: 999999999999;\n    border-bottom: 2px solid #eeeeee; }\n\n.list {\n  background: #fff;\n  border: 1px solid #eee; }\n  .list .ctrlIcon {\n    display: inline-block;\n    margin: 5px; }\n    .list .ctrlIcon.stared {\n      color: #ffc900; }\n    .list .ctrlIcon:nth-child(even):hover {\n      color: #2ab187; }\n  .list .textIcon {\n    display: inline-block;\n    margin: 0 25px;\n    line-height: 2rem; }\n    .list .textIcon.complete {\n      color: #717677; }\n  .list .contentText {\n    display: inline-block;\n    line-height: 2em;\n    font-size: 2em; }\n    .list .contentText-complete {\n      color: #717677;\n      text-decoration: line-through; }\n    .list .contentText-hover {\n      text-decoration: line-through; }\n  .list .inputText {\n    color: #717677;\n    font-size: 2em;\n    border: 0; }\n  .list-empty {\n    font-size: 2em;\n    margin-top: 85px;\n    color: #2ab187; }\n  .list-item {\n    height: 120px;\n    position: relative;\n    border: 1px solid #eeeeee;\n    border-width: 1px 0; }\n    .list-item-content {\n      line-height: 120px;\n      text-align: left; }\n    .list-item-ctrl {\n      position: absolute;\n      width: 10%;\n      height: 100%;\n      top: 15px;\n      right: 0;\n      vertical-align: middle; }\n      .list-item-ctrl a {\n        color: #9b9b9b; }\n", ""]);
+	exports.push([module.id, "@charset \"UTF-8\";\n/*\n  Copyright (c) 2011, Yahoo! Inc. All rights reserved.\n  Code licensed under the BSD License:\n  http://developer.yahoo.com/yui/license.html\n  version: 2.9.0\n*/\nbody {\n  font: 13px/1.231 arial,helvetica,clean,sans-serif;\n  *font-size: small;\n  *font: x-small; }\n\nselect, input, textarea, button {\n  font: 99% arial,helvetica,clean,sans-serif; }\n\ntable {\n  font-size: inherit;\n  font: 100%; }\n\npre, code, kbd, samp, tt {\n  font-family: monospace;\n  *font-size: 108%;\n  line-height: 100%; }\n\n/*\n  Copyright (c) 2011, Yahoo! Inc. All rights reserved.\n  Code licensed under the BSD License:\n  http://developer.yahoo.com/yui/license.html\n  version: 2.9.0\n*/\nhtml {\n  color: #000;\n  background: #FFF; }\n\nbody, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, select, p, blockquote, th, td {\n  margin: 0;\n  padding: 0; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\nfieldset, img {\n  border: 0; }\n\naddress, button, caption, cite, code, dfn, em, input, optgroup, option, select, strong, textarea, th, var {\n  font: inherit; }\n\ndel, ins {\n  text-decoration: none; }\n\nli {\n  list-style: none; }\n\ncaption, th {\n  text-align: left; }\n\nh1, h2, h3, h4, h5, h6 {\n  font-size: 100%;\n  font-weight: normal; }\n\nq:before, q:after {\n  content: ''; }\n\nabbr, acronym {\n  border: 0;\n  font-variant: normal; }\n\nsup {\n  vertical-align: baseline; }\n\nsub {\n  vertical-align: baseline; }\n\nlegend {\n  color: #000; }\n\n/*\n  _reset\n\n  http://meyerweb.com/eric/tools/css/reset/\n  v2.0 | 20110126\n  License: none (public domain)\n*/\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/*\n  HTML5 display-role reset for older browsers\n*/\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\na {\n  outline: 0;\n  text-decoration: none; }\n\n.hide-text {\n  overflow: hidden;\n  padding: 0;\n  /* 1 */\n  text-indent: 101%;\n  white-space: nowrap; }\n\n.visually-hidden {\n  border: 0;\n  clip: rect(0 0 0 0);\n  height: 1px;\n  margin: -1px;\n  overflow: hidden;\n  padding: 0;\n  position: absolute;\n  width: 1px; }\n\n.mb-only {\n  display: none; }\n  @media (max-width: 640px) and (min-width: 0) {\n    .mb-only {\n      display: block; } }\n\n* {\n  padding: 0;\n  margin: 0; }\n\nhtml {\n  background: #ecf0f1;\n  color: #fff;\n  font-family: \"\\5FAE\\8EDF\\6B63\\9ED1\\9AD4\", \"Microsoft JhengHei\", Arial, Verdana, Arial, Helvetica, sans-serif, \"STHeiti Light\", \"\\5137\\9ED1   Pro\", \"LiHei Pro\", \"Microsoft Yahei\", \"Microsoft JhengHei\", \"\\65B0\\7D30\\660E\\9AD4\" !important;\n  font-size: 16px;\n  line-height: 1.5;\n  height: 100%;\n  box-sizing: border-box; }\n\nbody {\n  height: 100%;\n  font-size: 100%; }\n\n*, *::before, *::after {\n  box-sizing: inherit; }\n\ntextarea:focus, input:focus {\n  outline: none; }\n\nh1, .h1,\nh2, .h2,\nh3, .h3,\nh4, .h4 {\n  font-family: \"OpenSans\", sans-serif;\n  font-weight: bold;\n  line-height: 1.2;\n  word-spacing: 0.1em;\n  margin-bottom: 1.25em;\n  margin-top: 0; }\n\np, span, div, dl, dd, dt {\n  word-spacing: 0.1em; }\n\na {\n  color: #27cc95;\n  text-decoration: none; }\n  a:hover, a:focus {\n    color: #76dafe; }\n\nheader .logo {\n  font-size: 7.5em;\n  letter-spacing: 5px; }\n  header .logo-comment {\n    font-size: 0.2em;\n    letter-spacing: normal; }\n\n.nav {\n  margin: 15px auto;\n  display: inline-block; }\n  .nav a {\n    color: #717677; }\n    .nav a:hover {\n      color: #27cc95; }\n    .nav a.active {\n      color: #27cc95; }\n  .nav-item {\n    float: left;\n    padding: 0 20px;\n    border: 0; }\n\n.container {\n  max-width: 60em;\n  margin: 0 auto; }\n\n.column {\n  margin: 0 3em; }\n\n.bg {\n  min-height: 100%;\n  min-width: 100%;\n  background: -moz-linear-gradient(top, #f8fdff 0%, ‪ #‎41d1d4‬ 100%);\n  /* FF3.6-15 */\n  background: -webkit-linear-gradient(top, #f8fdff 0%, #41d1d4 100%);\n  /* Chrome10-25,Safari5.1-6 */\n  background: linear-gradient(to bottom, #f8fdff 0%, #41d1d4 100%); }\n\n.wrap {\n  margin: 0 auto;\n  text-align: center;\n  width: 640px;\n  position: relative;\n  color: #27cc95; }\n\n.addTodo {\n  height: 70px;\n  width: 100%;\n  border: 1px solid #eee;\n  border-bottom: 0;\n  background: #fff;\n  overflow: hidden;\n  font-size: 1.5em; }\n  .addTodo-input {\n    height: 100%;\n    width: 80%;\n    border: 0;\n    color: #717677; }\n  .addTodo-btn {\n    width: 10%;\n    display: inline-block;\n    vertical-align: middle; }\n\nmain.index {\n  width: 455px;\n  padding-right: 30px;\n  margin: 0 auto; }\n  main.index .fixed {\n    position: fixed;\n    top: 0;\n    width: inherit;\n    background-color: white;\n    z-index: 999999999999;\n    border-bottom: 2px solid #eeeeee; }\n\n.list {\n  background: #fff;\n  border: 1px solid #eee;\n  font-size: 1.5em; }\n  .list .ctrlIcon {\n    position: relative;\n    top: 25%;\n    display: block; }\n    .list .ctrlIcon.ctrlIcon-stared {\n      color: #ffc900; }\n    .list .ctrlIcon:nth-child(even):hover {\n      color: #2ab187; }\n  .list .textIcon {\n    display: inline-block;\n    margin: 0 25px;\n    line-height: 2rem; }\n    .list .textIcon.textIcon-complete {\n      color: #717677; }\n  .list .contentText {\n    display: inline-block;\n    line-height: 2em; }\n    .list .contentText.contentText-complete {\n      color: #717677;\n      text-decoration: line-through; }\n    .list .contentText.contentText-hover {\n      text-decoration: line-through; }\n  .list .inputText {\n    color: #717677;\n    border: 0; }\n  .list-empty {\n    font-size: 1.5em;\n    margin-top: 85px;\n    color: #2ab187; }\n  .list-item {\n    height: 120px;\n    position: relative;\n    border: 1px solid #eeeeee;\n    border-width: 1px 0;\n    overflow: hidden; }\n    .list-item-content {\n      line-height: 120px;\n      text-align: left; }\n    .list-item-ctrl {\n      position: absolute;\n      width: 10%;\n      height: 100%;\n      top: 0;\n      right: 0; }\n      .list-item-ctrl a {\n        color: #9b9b9b; }\n", ""]);
 	
 	// exports
 
