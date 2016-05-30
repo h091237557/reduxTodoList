@@ -16,7 +16,6 @@ export function getDbState() {
     return (dispatch,getState) => {
         if(lastState === null) return;
         dispatch(InitTodo(lastState.todos));
-        dispatch(SetVisibleTodo(lastState.visible));
     }
 }
 

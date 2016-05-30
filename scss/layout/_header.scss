@@ -1,0 +1,30 @@
+//Component
+header {
+  width: 100%;
+  overflow: hidden;
+  padding-top: 2.5em;
+  //page
+  &.index-page {
+
+  }
+  &.demo-page {
+
+  }
+}
+.header-logo {
+  float: left;
+  overflow: hidden;
+}
+
+@include respond-to(small) {
+  header {
+    padding-top: 0;
+  }
+
+  .header-logo {
+    float: none;
+    img {
+      width:100%;
+    }
+  }
+}

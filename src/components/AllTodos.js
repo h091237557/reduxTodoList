@@ -6,12 +6,11 @@ import TodoList                             from './TodoList';
 class AllTodos extends Component {
     constructor(props, context) {
         super(props, context);
-    }
-
-    state = {
+        this.state = {};
     }
 
     render() {
+        this.props.SetVisibleTodo('SHOW_ALL');
         return (
           <section className="clearfix">
             <TodoList {...this.props}/>

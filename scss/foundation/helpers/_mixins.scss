@@ -1,0 +1,107 @@
+// *************************************
+//   _mixins
+// *************************************
+
+// Retrieves the value from the key
+// If the key exists in the map
+// Prints a media query based on the value
+@mixin respond-to($breakpoint) {
+
+  $value: map-get($breakpoints, $breakpoint);
+  @if $value !=null {
+      @if $breakpoint=='small' {
+          @media (max-width: map-get($breakpoints, 'small')) and (min-width: 0) {
+              @content;
+          }
+      }
+      //排除
+      @else if $breakpoint=='small-up' {
+          @media (min-width: map-get($breakpoints, 'small')+1) {
+              @content;
+          }
+      }
+      @else if $breakpoint=='medium' {
+          @media (min-width: map-get($breakpoints, 'small')+1) and (max-width: map-get($breakpoints, 'medium')) {
+              @content;
+          }
+      }
+      @else{
+      @media (min-width: map-get($breakpoints, 'large')){
+          @content;
+      }
+      }
+  }
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. " + "Please make sure it is defined in `$breakpoints` map.";
+  }
+}
+
+@mixin hideText($w,$h){
+    width:$w;
+    height:$h;
+    overflow:hidden;
+    text-indent: 110%;
+    white-space: nowrap;
+}
+
+// triangle
+// ----------------------------
+@mixin triangle($direction, $size, $borderColor ) {
+  content:"";
+  height: 0;
+  width: 0;
+
+  @if $direction == top {
+    border-bottom:$size solid $borderColor;
+    border-left:$size dashed transparent;
+    border-right:$size dashed transparent;
+  }
+  @else if $direction == right {
+    border-left:$size solid $borderColor;
+    border-top:$size dashed transparent;
+    border-bottom:$size dashed transparent;
+  }
+  @else if $direction == bottom {
+    @include prefixer(border-top, $size solid $borderColor, webkit moz o spec);
+    @include prefixer(border-left, $size dashed transparent, webkit moz o spec);
+    @include prefixer(border-right, $size solid transparent, webkit moz o spec);
+  }
+  @else if $direction == left {
+    border-right:$size solid $borderColor;
+    border-top:$size dashed transparent;
+    border-bottom:$size dashed transparent;
+  }
+}
+
+// prefixer
+// ----------------------------
+@mixin prefixer ($property, $value, $prefixes) {
+  @each $prefix in $prefixes {
+
+    @if $prefix == webkit and $prefix-for-webkit == true {
+      -webkit-#{$property}: $value;
+    }
+    @else if $prefix == moz and $prefix-for-mozilla == true {
+      -moz-#{$property}: $value;
+    }
+    @else if $prefix == ms and $prefix-for-microsoft == true {
+      -ms-#{$property}: $value;
+    }
+    @else if $prefix == o and $prefix-for-opera == true {
+      -o-#{$property}: $value;
+    }
+    @else if $prefix == spec and $prefix-for-spec == true {
+      #{$property}: $value;
+    }
+    @else {
+      @warn "Unrecognized prefix: #{$prefix}";
+    }
+  }
+}
+
+@mixin box-shadow($shadow...){
+    -webkit-box-shadow:$shadow;
+    -moz-box-shadow:$shadow;
+    box-shadow:$shadow;
+}

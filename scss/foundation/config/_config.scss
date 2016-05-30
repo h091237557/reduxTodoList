@@ -1,0 +1,59 @@
+// -------------------------------------
+//   Base
+// -------------------------------------
+
+// ----- Browser Support ----- //
+$prefix-for-webkit: true !default;
+$prefix-for-mozilla: true !default;
+$prefix-for-microsoft: true !default;
+$prefix-for-opera: true !default;
+$prefix-for-spec: true !default;
+
+
+// ----- Typography ----- //
+
+$b-fontFamily-heading: 'OpenSans', sans-serif;
+$b-fontFamily: '微軟正黑體','Microsoft JhengHei',Arial,Verdana,Arial,Helvetica,sans-serif,'STHeiti Light','儷黑 Pro','LiHei Pro','Microsoft Yahei','Microsoft JhengHei','新細明體' !important;
+$b-fontSize: 16px;
+$b-fontSize-s: 75%;
+$b-fontSize-m: 90%;
+$b-fontSize-l: 115%;
+$b-lineHeight: 1.5;
+
+// ----- Sizing ----- //
+
+$b-space: em(20px);
+$b-space-xs: $b-space;
+$b-space-s: 0.5 * $b-space;
+$b-space-l: 2 * $b-space;
+$b-space-xl: 4 * $b-space;
+
+
+// -------------------------------------
+//   Components
+// -------------------------------------
+
+// ----- Grid ----- //
+
+$g-s: 640px;
+$g-m: 960px;
+$g-l: 1441px;
+
+// -------------------------------------
+//   Function & Mixin
+// -------------------------------------
+
+$breakpoints: (
+  'small'  : $g-s,
+  'medium' : $g-m,
+  'large' : $g-l
+);
+
+//960 Layout
+$_columns: 12 !default;           // 總列數
+$_column-width: 60px !default;   // 單列寬
+$_gutter: 20px !default;        // 間隔
+
+// -------------------------------------
+//   Structures
+// -------------------------------------

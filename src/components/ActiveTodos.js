@@ -6,12 +6,11 @@ import TodoList                             from './TodoList';
 class StarredTodos extends Component {
     constructor(props, context) {
         super(props, context);
-    }
-
-    state = {
+        this.state = {};
     }
 
     render() {
+        this.props.SetVisibleTodo('SHOW_ACTIVE');
         const todos = this.props.todos.filter( t => !t.completed);
         return (
           <section className="clearfix">

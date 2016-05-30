@@ -1,0 +1,43 @@
+// -------------------------------------
+//  $b-* 用於基礎變數
+//  $c-* 用於顏色
+//  $g-* 用於斷點（breakpoints）
+//  $componentName-* 用於 Components
+//  $structureName-* 用於 Structures
+// -------------------------------------
+
+// -------------------------------------
+//   Colors
+// -------------------------------------
+
+// ----- Palette ----- //
+
+$cerulean: #017ba7;
+$forest: #7ba05b;
+$gainsboro: #ecf0f1;
+$gold: #ffd700;
+$jet: #343434;
+$scarlet: #ff3f00;
+$white: #fff;
+
+// ----- Base ----- //
+
+$c-base: $white;
+$c-background-invert: $white;
+$c-background: $gainsboro;
+$c-border: lighten($jet, 30%);
+$c-error: $scarlet;
+$c-highlight: $cerulean;
+$c-text-invert: $white;
+$c-text: $jet;
+$c-subdue: lighten($cerulean, 40%);
+$c-success: $forest;
+$c-warning: $gold;
+
+// ----- Components ----- //
+
+// 範例：$row--a-background: $c-highlight
+
+// ----- Structures ----- //
+
+// 範例：$dropdown-link-color: $c-subdue

@@ -1,0 +1,76 @@
+// *************************************
+//
+//   Base
+//   -> Tag-level settings
+//
+// *************************************
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    background: $c-background;
+    color: $c-base;
+    font-family: $b-fontFamily;
+    font-size: $b-fontSize;
+    line-height: $b-lineHeight;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    font-size: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+// -------------------------------------
+//   Block Content
+// -------------------------------------
+
+// ul, p {
+//   margin-bottom: $b-space;
+//   margin-top: 0;
+// }
+
+// li {
+//   margin-bottom: $b-space-s;
+//   margin-top: 0;
+// }
+
+// ----- Headers ----- //
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4 {
+  font-family: $b-fontFamily-heading;
+  font-weight: bold;
+  line-height: 1.2;
+  word-spacing: 0.1em;
+  margin-bottom: $b-space-xs;
+  margin-top: 0;
+}
+
+p,span,div,dl,dd,dt {
+    word-spacing: 0.1em;
+}
+
+// -------------------------------------
+//   Inline Content
+// -------------------------------------
+
+a {
+  color: $c-highlight;
+  text-decoration: none;
+  &:hover,
+  &:focus {
+    color: $c-subdue;
+  }
+}
+

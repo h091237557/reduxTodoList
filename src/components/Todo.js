@@ -7,22 +7,21 @@ import classNames                           from 'classnames'
 class Todo extends Component {
     constructor(props, context) {
         super(props, context);
+        this.state = {
+          isEdit:false,
+          isIconHovering:false,
+          itemHover:false,
+          text:this.props.text
+        }
         this.changeContent = this.changeContent.bind(this);
         this._handleKeyPress = this._handleKeyPress.bind(this);
     }
 
-    state = {
-      isEdit:false,
-      iconHover:false,
-      itemHover:false,
-      text:this.props.text
-    }
-
     handleIconHover (action) {
-      if(action === 'leave' && !this.state.iconHover){
+      if(action === 'leave' && !this.state.isIconHovering){
         return;
       }
-      this.setState({iconHover: !this.state.iconHover});
+      this.setState({isIconHovering: !this.state.isIconHovering});
     }
 
     handleItemHover (action) {
@@ -46,101 +45,110 @@ class Todo extends Component {
     }
 
     starIcon (){
-      if( (this.state.itemHover && !this.props.isEdit) || this.props.star ){
-        return ( <a href="javascript:"
-                    onClick={ this.props.toggleStarTodo }
-                    className={classNames({ 'stared': this.props.star},'ctrlIcon')} >
-                      <i className={classNames({ 'fa-star-o': !this.props.star , 'fa-star': this.props.star},'fa','fa-2x')}
-                        aria-hidden="true"></i>
-                  </a> );
-      }else{
-        return '';
-      }
+      const style = {
+        display: ( (this.state.itemHover && !this.props.isEdit) || this.props.star ) ? '': 'none'
+      };
+      return ( <a href="javascript:"
+                  onClick={ this.props.toggleStarTodo }
+                  className={classNames({ 'stared': this.props.star},'ctrlIcon')}
+                  style={style}>
+                    <i className={classNames({ 'fa-star-o': !this.props.star , 'fa-star': this.props.star},'fa','fa-2x')}
+                      aria-hidden="true"></i>
+                </a> );
     }
 
     trashIcon (){
-      if(this.state.itemHover && !this.props.isEdit){
-        return ( <a href="javascript:" onClick={ this.props.deleteTodo } className="ctrlIcon">
-                              <i className="fa fa-trash fa-2x" aria-hidden="true"></i>
-                            </a> );
-      }else{
-        return '';
-      }
+      const style = {
+        display: (this.state.itemHover && !this.props.isEdit)? '': 'none'
+      };
+      return ( <a href="javascript:"
+                  onClick={ this.props.deleteTodo }
+                  className="ctrlIcon"
+                  style={style}>
+                  <i className="fa fa-trash fa-2x" aria-hidden="true"></i>
+                </a> );
     }
 
-    ItemText (){
-      if(this.props.completed){
-        return (<span href="javascript:">
-                    <p className={ classNames({ 'complete': this.props.completed}, 'text' )}>
-                      {this.state.text}
-                    </p>
-                </span> );
-      }else if (this.props.isEdit && this.props.editCurrent){
-        return ( <input
-                    className="text"
-                    style={{cursor: 'pointer'}}
-                    ref={ input => {
-                          if(input === null) return;
-                            input.focus();
-                        }}
-                    type='text' value={this.state.text}
-                    onChange={ this.changeContent }
-                    onblur={ this._handleKeyPress }
-                    onKeyPress = {this._handleKeyPress}/>);
-      }else{
-        return ( <a href="javascript:"
-                    onClick={
-                      () => {
-                        if(this.props.isEdit) return;
-                        this.props.editTodo();
-                      }
-                    }>
-                    <p className={ classNames({ 'complete': this.props.completed , 'textHover' : this.state.iconHover}, 'text' )}>
-                      {this.state.text}
-                    </p>
-                 </a> );
-      }
+    itemText_completed () {
+      return (<span>
+                  <p className={ classNames({ 'complete': this.props.completed}, 'text' )}>
+                    {this.state.text}
+                  </p>
+              </span> );
     }
 
-    itemToggle (){
-      if(this.props.completed){
-        return (<a href="javascript:"
-                  onClick={ this.props.toggleTodo }
-                  className={classNames({ 'complete': this.props.completed},'textIcon')}>
-                  <i className="fa fa-check-circle fa-3x" aria-hidden="true"></i>
-                </a>);
+    itemText_edit () {
+      return ( <input
+                  className="text"
+                  style={{cursor: 'pointer'}}
+                  ref={ input => {
+                        if(input === null) return;
+                          input.focus();
+                      }}
+                  type='text' value={this.state.text}
+                  onChange={ this.changeContent }
+                  onblur={ this._handleKeyPress }
+                  onKeyPress = {this._handleKeyPress}/>);
+    }
 
-      }else if(this.props.isEdit && this.props.editCurrent){
-        return (<span className={classNames({ 'complete': this.props.completed},'textIcon')}
-                    style={{'color': '#717677'}}>
-                  <i className="fa fa-genderless fa-3x" aria-hidden="true"></i>
-                </span>);
-      }else{
-        return (<a href="javascript:"
+    itemText (){
+      return ( <a href="javascript:"
                   onClick={
                     () => {
                       if(this.props.isEdit) return;
-                      this.props.toggleTodo();
+                      this.props.editTodo();
                     }
-                  }
-                  onMouseEnter={this.handleIconHover.bind(this,'enter')}
-                  onMouseLeave={this.handleIconHover.bind(this,'leave')}
-                  className="textIcon">
-                  <i className={classNames({
-                                  'fa-genderless': !this.state.iconHover,
-                                  'fa-check-circle': this.state.iconHover
-                                },'fa','fa-3x')}
-                      aria-hidden="true"></i>
-                </a>);
-      }
+                  }>
+                  <p className={ classNames({ 'complete': this.props.completed , 'textHover' : this.state.isIconHovering}, 'text' )}>
+                    {this.state.text}
+                  </p>
+               </a> );
+    }
+
+    itemToggle_completed = () => (<a href="javascript:"
+                                    onClick={ this.props.toggleTodo }
+                                    className={classNames({ 'complete': this.props.completed},'textIcon')}>
+                                    <i className="fa fa-check-circle fa-3x" aria-hidden="true"></i>
+                                  </a>)
+
+    itemToggle_edit = () => (<span className={classNames({ 'complete': this.props.completed},'textIcon')}
+                                style={{'color': '#717677'}}>
+                              <i className="fa fa-genderless fa-3x" aria-hidden="true"></i>
+                            </span>)
+    itemToggle (){
+      return (<a href="javascript:"
+                onClick={() => {
+                    if(this.props.isEdit) return;
+                    this.props.toggleTodo();
+                  }}
+                onMouseEnter={this.handleIconHover.bind(this,'enter')}
+                onMouseLeave={this.handleIconHover.bind(this,'leave')}
+                className="textIcon">
+                <i className={classNames({
+                                'fa-genderless': !this.state.isIconHovering,
+                                'fa-check-circle': this.state.isIconHovering
+                              },'fa','fa-3x')}
+                    aria-hidden="true"></i>
+              </a>);
     }
 
     render() {
+        let itemText,itemToggle;
+        if(this.props.completed){
+          itemText=this.itemText_completed();
+          itemToggle = this.itemToggle_completed();
+        }else if (this.props.isEdit && this.props.editCurrent){
+          itemText=this.itemText_edit();
+          itemToggle = this.itemToggle_edit();
+        }else{
+          itemText=this.itemText();
+          itemToggle = this.itemToggle();
+        }
         return (
           <li className="clearfix item" onMouseEnter={this.handleItemHover.bind(this,'enter')} onMouseLeave={this.handleItemHover.bind(this,'leave')}>
               <div className="item-content">
-                  {this.itemToggle()}
-                  {this.ItemText()}
+                  {itemToggle}
+                  {itemText}
               </div>
               <div className="item-ctrl">
                   {this.starIcon()}
