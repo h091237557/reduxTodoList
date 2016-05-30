@@ -1,30 +1,12 @@
 //Component
 header {
-  width: 100%;
-  overflow: hidden;
-  padding-top: 2.5em;
-  //page
-  &.index-page {
-
-  }
-  &.demo-page {
-
-  }
-}
-.header-logo {
-  float: left;
-  overflow: hidden;
-}
-
-@include respond-to(small) {
-  header {
-    padding-top: 0;
-  }
-
-  .header-logo {
-    float: none;
-    img {
-      width:100%;
+  .logo{
+    font-size: 7.5em;
+    letter-spacing: 5px;
+    &-comment{
+      font-size: 0.2em;
+      letter-spacing: normal;
     }
   }
 }
+

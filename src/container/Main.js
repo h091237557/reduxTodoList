@@ -32,7 +32,7 @@ class Main extends Component {
 
     render() {
         return (
-          <main>
+          <main className="index">
             <TodoFilter {...this.props} switchVisible = { (visibleState) => this.switchVisible(visibleState) } />
             <AddTodo {...this.props} />
             {React.cloneElement(this.props.children, { ...this.props })}

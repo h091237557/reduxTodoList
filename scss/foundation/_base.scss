@@ -11,13 +11,13 @@
 }
 
 html {
-    background: $c-background;
-    color: $c-base;
-    font-family: $b-fontFamily;
-    font-size: $b-fontSize;
-    line-height: $b-lineHeight;
-    height: 100%;
-    box-sizing: border-box;
+  background: $c-background;
+  color: $c-base;
+  font-family: $b-fontFamily;
+  font-size: $b-fontSize;
+  line-height: $b-lineHeight;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 body {
@@ -33,15 +33,15 @@ body {
 //   Block Content
 // -------------------------------------
 
-// ul, p {
-//   margin-bottom: $b-space;
-//   margin-top: 0;
-// }
+ul, p {
+}
 
-// li {
-//   margin-bottom: $b-space-s;
-//   margin-top: 0;
-// }
+li {
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
 
 // ----- Headers ----- //
 
@@ -66,7 +66,7 @@ p,span,div,dl,dd,dt {
 // -------------------------------------
 
 a {
-  color: $c-highlight;
+  color: $c-base-text;
   text-decoration: none;
   &:hover,
   &:focus {

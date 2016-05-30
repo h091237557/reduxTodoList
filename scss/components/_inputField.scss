@@ -1,0 +1,20 @@
+.addTodo {
+  height: 70px;
+  width: 100%;
+  border: 1px solid #eee;
+  border-bottom: 0;
+  background: $c-base;
+  overflow: hidden;
+  font-size: 1.5em;
+  &-input {
+    height: 100%;
+    width: 80%;
+    border: 0;
+    color: $c-nav;
+  }
+  &-btn {
+    width: 10%;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}

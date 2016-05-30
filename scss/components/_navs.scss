@@ -1,27 +1,19 @@
 //Component
-.nav-h {
-  float: right;
-  &-wrap {
-    overflow: hidden;
-  }
-
-  &-item {
-    float:left;
-    line-height: 60px;
-    margin: 0 0.5em;
-  }
-  &-item-link {
-    display: inline-block;
-  }
-}
-
-@include respond-to(small) {
-  .nav-h {
-    height: 60px;
-    float: none;
-    text-align: center;
-    &-wrap {
-      display:inline-block;
+.nav {
+  margin: 15px auto;
+  display: inline-block;
+  a{
+    color: $c-nav;
+    &:hover{
+      color: $c-base-text;
     }
+    &.active{
+      color: $c-base-text;
+    }
+  }
+  &-item {
+    float: left;
+    padding: 0 20px;
+    border: 0;
   }
 }

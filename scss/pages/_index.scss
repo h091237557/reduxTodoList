@@ -1,12 +1,89 @@
 //Page
 main.index {
-  @include box-shadow(0 0 5px rgba(0,0,0,.3),inset 0 0 3px rgba(255,255,255,.5));
-  ul.demoList {
-    text-align: center;
+  width: 455px;
+  padding-right: 30px;
+  margin: 0 auto;
+  .fixed{
+    position: fixed;
+    top:0;
+    width: inherit;
+    background-color: white;
+    z-index: 999999999999;
+    border-bottom: 2px solid #eeeeee;
+  }
+}
+
+
+.list {
+  background: $c-base;
+  border: 1px solid #eee;
+  font-size: 1.5em;
+  .ctrlIcon {
+    position: relative;
+    top:25%;
+    display: block;
+    &.ctrlIcon-stared {
+      color: #ffc900;
+    }
+    &:nth-child(even){
+      &:hover{
+        color:#2ab187;
+      }
+    }
+  }
+
+  .textIcon {
+    display: inline-block;
+    margin: 0 25px;
+    line-height: 2rem;
+    &.textIcon-complete{
+      color: #717677;
+    }
+  }
+
+  .contentText {
+    display: inline-block;
+    line-height: 2em;
+    // font-size: 2em;
+    &.contentText-complete{
+      color: $c-nav;
+      text-decoration: line-through;
+    }
+    &.contentText-hover{
+      text-decoration: line-through;
+    }
+  }
+  .inputText{
+    color: #717677;
+    // font-size: 2em;
+    border: 0;
+  }
+
+  &-empty {
+    // font-size: 2em;
+    margin-top: 85px;
+    color: $c-list-text;
+  }
+
+  &-item {
+    height: 120px;
+    position: relative;
+    border: 1px solid #eeeeee;
+    border-width: 1px 0;
     overflow: hidden;
-    li.demoList__item {
-      width: auto;
-      display: inline-block;
+    &-content {
+      line-height: 120px;
+      text-align: left;
+    }
+    &-ctrl {
+      position: absolute;
+      width: 10%;
+      height: 100%;
+      top:0;
+      right:0;
+      a{
+        color:#9b9b9b;
+      }
     }
   }
 }

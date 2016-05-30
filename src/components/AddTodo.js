@@ -13,7 +13,7 @@ let TodosInput = ({ AddTodo }) => {
     }
   }
   return (
-    <div className="addTodo">
+    <section className="addTodo">
       <input className="addTodo-input" type="text"
         placeholder="Type"
         onKeyPress = {_handleKeyPress}
@@ -27,16 +27,10 @@ let TodosInput = ({ AddTodo }) => {
         AddTodo(inputText.value);
         inputText.value = '';
       }}>
-        <a href="javascript:"><i className="fa fa-plus fa-3x" aria-hidden="true"></i></a>
+        <a href="javascript:"><i className="fa fa-plus fa-1x" aria-hidden="true"></i></a>
       </div>
-    </div>
+    </section>
   );
 };
-// TodosInput = connect(
-//     state => state,
-//     dispatch => {
-//       return bindActionCreators(TodoAction, dispatch);
-//     }
-// )(TodosInput);
 
 export default TodosInput;
